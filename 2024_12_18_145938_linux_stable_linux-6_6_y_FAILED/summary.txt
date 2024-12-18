@@ -1,0 +1,22 @@
+BuildBot project: linux_stable_linux-6_6_y
+Linux version: 6.6.101
+Commit hash: b99eaea868ff9433786c4b050aa51ba902d8df33
+
+Building kernel failed!
+stderr:
+
+In file included from scripts/gcc-plugins/gcc-common.h:95,
+                 from scripts/gcc-plugins/arm_ssp_per_task_plugin.c:3:
+/home/user01/Linux-Driver-Testing/compilers/gcc-linaro-6.4.1-2017.11-x86_64_arm-linux-gnueabihf/bin/../lib/gcc/arm-linux-gnueabihf/6.4.1/plugin/include/builtins.h:23:10: fatal error: mpc.h: No such file or directory
+   23 | #include <mpc.h>
+      |          ^~~~~~~
+compilation terminated.
+make[3]: *** [scripts/gcc-plugins/Makefile:54: scripts/gcc-plugins/arm_ssp_per_task_plugin.so] Error 1
+make[2]: *** [scripts/Makefile.build:480: scripts/gcc-plugins] Error 2
+make[1]: *** [/home/user01/Linux-Driver-Testing/buildbot/master_root/master/workers/Linux_Worker/linux_stable_linux-6_6_y/build/Makefile:1185: scripts] Error 2
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:234: __sub-make] Error 2
+
+Git bisect state: cannot_start
+status: waiting for good commit(s), bad commit known
+
