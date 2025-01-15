@@ -1,0 +1,37 @@
+BuildBot project: linux-next
+Linux version: next-20250115
+Commit hash: e7bb221a638962d487231ac45a6699fb9bb8f9fa
+
+Building kernel failed!
+stderr:
+
+In file included from <command-line>:0:0:
+drivers/pci/probe.c: In function ‘pci_read_bases’:
+././include/linux/compiler_types.h:542:38: error: call to ‘__compiletime_assert_291’ declared with attribute error: BUILD_BUG_ON failed: howmany > PCI_STD_NUM_BARS
+  _compiletime_assert(condition, msg, __compiletime_assert_, __COUNTER__)
+                                      ^
+././include/linux/compiler_types.h:523:4: note: in definition of macro ‘__compiletime_assert’
+    prefix ## suffix();    \
+    ^~~~~~
+././include/linux/compiler_types.h:542:2: note: in expansion of macro ‘_compiletime_assert’
+  _compiletime_assert(condition, msg, __compiletime_assert_, __COUNTER__)
+  ^~~~~~~~~~~~~~~~~~~
+./include/linux/build_bug.h:39:37: note: in expansion of macro ‘compiletime_assert’
+ #define BUILD_BUG_ON_MSG(cond, msg) compiletime_assert(!(cond), msg)
+                                     ^~~~~~~~~~~~~~~~~~
+./include/linux/build_bug.h:50:2: note: in expansion of macro ‘BUILD_BUG_ON_MSG’
+  BUILD_BUG_ON_MSG(condition, "BUILD_BUG_ON failed: " #condition)
+  ^~~~~~~~~~~~~~~~
+drivers/pci/probe.c:347:2: note: in expansion of macro ‘BUILD_BUG_ON’
+  BUILD_BUG_ON(howmany > PCI_STD_NUM_BARS);
+  ^~~~~~~~~~~~
+drivers/pci/probe.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-stringop-overflow’
+make[4]: *** [scripts/Makefile.build:205: drivers/pci/probe.o] Error 1
+make[3]: *** [scripts/Makefile.build:463: drivers/pci] Error 2
+make[3]: *** Waiting for unfinished jobs....
+make[2]: *** [scripts/Makefile.build:463: drivers] Error 2
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [/home/user01/Linux-Driver-Testing/buildbot/master_root/master/workers/Linux_Worker/linux-next/build/Makefile:1994: .] Error 2
+make: *** [Makefile:251: __sub-make] Error 2
+
