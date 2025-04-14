@@ -11,11 +11,11 @@ This repository holds test results of automated Linux driver test system.
 - BD71837
 - BD71847
 - BD96801
-- BD9675
+- BD9576
 
 ## About
 Linux mainline kernel includes thousands of changesets per development cycle. Kernel version 6.12 received 13355 changesets from 
-2074 developers between 15 September and 17 November in 2024 (8). That equates to around 210 changesets per day. The Linux 
+2074 developers between 15 September and 17 November in 2024. That equates to around 210 changesets per day. The Linux 
 kernel is where the drivers reside and is also where the changes happen that can negatively impact the driver functionality. The large 
 amount of changesets and time required for validation makes manual testing impractical. An Automated test system offers an efficient
 solution to find regressions early and identify the changeset that introduces regression.
