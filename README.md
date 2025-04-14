@@ -26,4 +26,4 @@ The results are organized in two branches [Sensor](https://github.com/RohmSemico
 a single test run. Detailed results are only written of tests that found failures. Overall results of the test run can be found in summary.txt, and component specific results can be found in a component specific directories. Serial communication logs are available in the \*\_UART\_LOG files.
 <br><br>
 The result directories are named in the following manner:<br>
-YYYY_MM_DD_hhmmss_*Linux repository*_*PASSED/FAILED* <br>
+YYYY_MM_DD_hhmmss_*Linux branch*_*PASSED/FAILED* <br>
