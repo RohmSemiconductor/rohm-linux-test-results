@@ -1,0 +1,21 @@
+BuildBot project: Linux_Mainline
+Linux version: v6.16-rc1
+Commit hash: 19272b37aa4f83ca52bdf9c16d5d81bdd1354494
+
+Building overlay merger failed!
+stderr:
+
+mva_overlay.c:41:18: error: initialization of 'ssize_t (*)(struct file *, struct kobject *, const struct bin_attribute *, char *, loff_t,  size_t)' {aka 'int (*)(struct file *, struct kobject *, const struct bin_attribute *, char *, long long int,  unsigned int)'} from incompatible pointer type 'ssize_t (*)(struct file *, struct kobject *, struct bin_attribute *, char *, loff_t,  size_t)' {aka 'int (*)(struct file *, struct kobject *, struct bin_attribute *, char *, long long int,  unsigned int)'} [-Wincompatible-pointer-types]
+   41 |         .write = &overlay_add_store,
+      |                  ^
+mva_overlay.c:41:18: note: (near initialization for 'overlay_add.write')
+mva_overlay.c:51:18: error: initialization of 'ssize_t (*)(struct file *, struct kobject *, const struct bin_attribute *, char *, loff_t,  size_t)' {aka 'int (*)(struct file *, struct kobject *, const struct bin_attribute *, char *, long long int,  unsigned int)'} from incompatible pointer type 'ssize_t (*)(struct file *, struct kobject *, struct bin_attribute *, char *, loff_t,  size_t)' {aka 'int (*)(struct file *, struct kobject *, struct bin_attribute *, char *, long long int,  unsigned int)'} [-Wincompatible-pointer-types]
+   51 |         .write = &overlay_del_store,
+      |                  ^
+mva_overlay.c:51:18: note: (near initialization for 'overlay_del.write')
+make[4]: *** [/home/user01/Linux-Driver-Testing/buildbot/master_root/master/workers/Linux_Worker/Linux_Mainline/build/scripts/Makefile.build:287: mva_overlay.o] Error 1
+make[3]: *** [/home/user01/Linux-Driver-Testing/buildbot/master_root/master/workers/Linux_Worker/Linux_Mainline/build/Makefile:2006: .] Error 2
+make[2]: *** [/home/user01/Linux-Driver-Testing/buildbot/master_root/master/workers/Linux_Worker/Linux_Mainline/build/Makefile:248: __sub-make] Error 2
+make[1]: *** [Makefile:248: __sub-make] Error 2
+make: *** [Makefile:5: all] Error 2
+
