@@ -1,0 +1,85 @@
+Testing: bd79701 ADDAC
+merge_dt_overlay failed: lsmod did not contain 'industrialio' 'rohm_bd79703'
+---- LSMOD ----
+Module                  Size  Used by
+mva_overlay            65536  0
+usb_f_acm              12288  2
+u_serial               16384  3 usb_f_acm
+usb_f_ecm              16384  2
+usb_f_rndis            24576  2
+u_ether                16384  2 usb_f_ecm,usb_f_rndis
+libcomposite           57344  16 usb_f_ecm,usb_f_acm,u_serial,u_ether,usb_f_rndis
+iptable_nat            12288  0
+nf_nat                 36864  1 iptable_nat
+nf_conntrack          106496  1 nf_nat
+nf_defrag_ipv6         16384  1 nf_conntrack
+nf_defrag_ipv4         12288  1 nf_conntrack
+iptable_mangle         12288  0
+iptable_filter         12288  0
+snd_soc_hdmi_codec     16384  1
+tda9950                12288  0
+bluetooth             634880  2
+evdev                  20480  0
+ecdh_generic           12288  1 bluetooth
+ecc                    36864  1 ecdh_generic
+snd_soc_simple_card    16384  0
+snd_soc_simple_card_utils    20480  1 snd_soc_simple_card
+omap_aes_driver        24576  0
+omap_crypto            12288  1 omap_aes_driver
+omap_sham              28672  0
+pm33xx                 12288  0
+libaes                 12288  2 omap_aes_driver,bluetooth
+crypto_engine          12288  2 omap_aes_driver,omap_sham
+ti_emif_sram           12288  1 pm33xx
+tilcdc                 32768  0
+omap_rng               12288  0
+drm_dma_helper         16384  1 tilcdc
+rng_core               16384  1 omap_rng
+drm_client_lib         12288  1 tilcdc
+snd_soc_davinci_mcasp    32768  2
+snd_soc_ti_udma        12288  1 snd_soc_davinci_mcasp
+snd_soc_ti_edma        12288  1 snd_soc_davinci_mcasp
+snd_soc_ti_sdma        12288  1 snd_soc_davinci_mcasp
+snd_soc_core          184320  7 snd_soc_davinci_mcasp,snd_soc_hdmi_codec,snd_soc_simple_card_utils,snd_soc_ti_sdma,snd_soc_ti_edma,snd_soc_ti_udma,snd_soc_simple_card
+snd_pcm_dmaengine      12288  1 snd_soc_core
+snd_pcm               114688  5 snd_soc_davinci_mcasp,snd_pcm_dmaengine,snd_soc_hdmi_codec,snd_soc_simple_card_utils,snd_soc_core
+musb_dsps              16384  0
+snd_timer              32768  1 snd_pcm
+musb_hdrc             131072  1 musb_dsps
+snd                    65536  4 snd_soc_hdmi_codec,snd_timer,snd_soc_core,snd_pcm
+omap_mailbox           12288  1
+udc_core               45056  7 usb_f_ecm,usb_f_acm,u_serial,musb_hdrc,u_ether,usb_f_rndis,libcomposite
+tda998x                20480  0
+soundcore              12288  1 snd
+usbcore               229376  1 musb_hdrc
+drm_kms_helper        126976  4 drm_dma_helper,tda998x,tilcdc,drm_client_lib
+phy_am335x             12288  2
+drm                   434176  6 drm_dma_helper,tda998x,tilcdc,drm_client_lib,drm_kms_helper
+phy_generic            12288  1 phy_am335x
+usb_common             12288  6 phy_am335x,udc_core,musb_hdrc,libcomposite,musb_dsps,usbcore
+omap_wdt               12288  0
+watchdog               24576  1 omap_wdt
+wkup_m3_ipc            12288  1 pm33xx
+drm_panel_orientation_quirks    12288  1 drm
+cppi41                 16384  60
+rtc_omap               16384  2 pm33xx
+tps65218_pwrbutton     12288  0
+cec                    45056  2 tda9950,tda998x
+phy_am335x_control     12288  1 phy_am335x
+at24                   16384  0
+wkup_m3_rproc          12288  1
+leds_gpio              12288  0
+cpufreq_dt             12288  0
+led_class              12288  1 leds_gpio
+ip_tables              20480  3 iptable_mangle,iptable_filter,iptable_nat
+x_tables               24576  4 iptable_mangle,ip_tables,iptable_filter,iptable_nat
+autofs4                45056  2
+---- /LSMOD ----
+---------------------------------- TEST INFO ----------------------------------
+This step installs devicetree overlays listed in the kernel_modules.py
+
+Assert success by checking that the modules listed in the kernel_modules.py can
+be found in the output of 'lsmod'.
+-------------------------------------------------------------------------------
+Test results: bd79701: FAILED
+
