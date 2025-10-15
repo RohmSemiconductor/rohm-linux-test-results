@@ -13,9 +13,10 @@ This repository holds test results of automated Linux driver test system.
 - BD96801
 - BD9576
 
-<br>
 🔗[ADC/DAC results](https://github.com/RohmSemiconductor/rohm-linux-test-results/tree/ADDAC)
 - BD79703
+
+<br>
 
 ## About
 Linux mainline kernel includes thousands of changesets per development cycle. Kernel version 6.12 received 13355 changesets from 
