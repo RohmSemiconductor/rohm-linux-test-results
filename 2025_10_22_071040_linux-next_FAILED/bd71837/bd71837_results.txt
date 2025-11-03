@@ -1,0 +1,32 @@
+Testing: bd71837 PMIC
+merge_dt_overlay failed: lsmod did not contain 'bd718x7_regulator' 'rohm_regulator' 'clk_bd718x7' 'rohm_bd718x7'
+---- LSMOD ----
+Module                  Size  Used by
+mva_overlay            65536  0
+usb_f_acm              12288  2
+u_serial               16384  1 usb_f_acm
+usb_f_ecm              16384  2
+usb_f_rndis            24576  2
+u_ether                16384  2 usb_f_ecm,usb_f_rndis
+libcomposite           57344  16 usb_f_ecm,usb_f_acm,u_serial,u_ether,usb_f_rndis
+udc_core               45056  6 usb_f_ecm,usb_f_acm,u_serial,u_ether,usb_f_rndis,libcomposite
+usb_common             12288  2 udc_core,libcomposite
+bluetooth             643072  2
+ecdh_generic           12288  1 bluetooth
+ecc                    36864  1 ecdh_generic
+libaes                 12288  1 bluetooth
+pm33xx                 12288  0
+rtc_omap               16384  2 pm33xx
+wkup_m3_ipc            12288  1 pm33xx
+ti_emif_sram           12288  1 pm33xx
+cpufreq_dt             12288  0
+autofs4                45056  2
+---- /LSMOD ----
+---------------------------------- TEST INFO ----------------------------------
+This step installs devicetree overlays listed in the kernel_modules.py
+
+Assert success by checking that the modules listed in the kernel_modules.py can
+be found in the output of 'lsmod'.
+-------------------------------------------------------------------------------
+Test results: bd71837: FAILED
+
