@@ -1,0 +1,37 @@
+BuildBot project: linux-next
+Linux version: next-20251022
+Commit hash: aaa9c3550b60d6259d6ea8b1175ade8d1242444e
+
+Kunit test result: test_linear_ranges: PASSED
+
+Kunit test result: iio_test_gts: PASSED
+
+Testing: bd79703 ADDAC
+Test results: bd79703: FAILED
+
+Git bisect state: success
+6717e8f91db71641cb52855ed14c7900972ed0bc is the first bad commit
+commit 6717e8f91db71641cb52855ed14c7900972ed0bc
+Author: Josh Poimboeuf <jpoimboe@kernel.org>
+Date:   Wed Sep 17 09:03:16 2025 -0700
+
+    kbuild: Remove 'kmod_' prefix from __KBUILD_MODNAME
+    
+    In preparation for the objtool klp diff subcommand, remove the arbitrary
+    'kmod_' prefix from __KBUILD_MODNAME and instead add it explicitly in
+    the __initcall_id() macro.
+    
+    This change supports the standardization of "unique" symbol naming by
+    ensuring the non-unique portion of the name comes before the unique
+    part.  That will enable objtool to properly correlate symbols across
+    builds.
+    
+    Cc: Masahiro Yamada <masahiroy@kernel.org>
+    Acked-by: Petr Mladek <pmladek@suse.com>
+    Tested-by: Joe Lawrence <joe.lawrence@redhat.com>
+    Signed-off-by: Josh Poimboeuf <jpoimboe@kernel.org>
+
+ include/linux/init.h | 3 ++-
+ scripts/Makefile.lib | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
