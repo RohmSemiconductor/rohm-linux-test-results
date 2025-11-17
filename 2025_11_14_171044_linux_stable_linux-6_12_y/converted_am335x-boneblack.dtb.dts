@@ -727,18 +727,20 @@
 								compatible = "ti,clksel";
 								reg = <0x52c>;
 								#clock-cells = <0x02>;
-								#address-cells = <0x00>;
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
 
-								clock-gfx-fclk-clksel {
+								clock-gfx-fclk-clksel@1 {
+									reg = <0x01>;
 									#clock-cells = <0x00>;
 									compatible = "ti,mux-clock";
 									clock-output-names = "gfx_fclk_clksel_ck";
 									clocks = <0x16 0x14>;
-									ti,bit-shift = <0x01>;
 									phandle = <0x1f>;
 								};
 
-								clock-gfx-fck-div {
+								clock-gfx-fck-div@0 {
+									reg = <0x00>;
 									#clock-cells = <0x00>;
 									compatible = "ti,divider-clock";
 									clock-output-names = "gfx_fck_div_ck";
@@ -752,9 +754,11 @@
 								compatible = "ti,clksel";
 								reg = <0x700>;
 								#clock-cells = <0x02>;
-								#address-cells = <0x00>;
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
 
-								clock-sysclkout-pre {
+								clock-sysclkout-pre@0 {
+									reg = <0x00>;
 									#clock-cells = <0x00>;
 									compatible = "ti,mux-clock";
 									clock-output-names = "sysclkout_pre_ck";
@@ -762,22 +766,22 @@
 									phandle = <0x21>;
 								};
 
-								clock-clkout2-div {
+								clock-clkout2-div@3 {
+									reg = <0x03>;
 									#clock-cells = <0x00>;
 									compatible = "ti,divider-clock";
 									clock-output-names = "clkout2_div_ck";
 									clocks = <0x21>;
-									ti,bit-shift = <0x03>;
 									ti,max-div = <0x08>;
 									phandle = <0x22>;
 								};
 
-								clock-clkout2 {
+								clock-clkout2@7 {
+									reg = <0x07>;
 									#clock-cells = <0x00>;
 									compatible = "ti,gate-clock";
 									clock-output-names = "clkout2_ck";
 									clocks = <0x22>;
-									ti,bit-shift = <0x07>;
 									phandle = <0x84>;
 								};
 							};
@@ -1213,13 +1217,17 @@
 							compatible = "atmel,24c256";
 							reg = <0x50>;
 							vcc-supply = <0x27>;
-							#address-cells = <0x01>;
-							#size-cells = <0x01>;
 							phandle = <0x97>;
 
-							baseboard_data@0 {
-								reg = <0x00 0x100>;
-								phandle = <0x98>;
+							nvmem-layout {
+								compatible = "fixed-layout";
+								#address-cells = <0x01>;
+								#size-cells = <0x01>;
+
+								baseboard_data@0 {
+									reg = <0x00 0x100>;
+									phandle = <0x98>;
+								};
 							};
 						};
 
@@ -1521,32 +1529,33 @@
 									compatible = "ti,clksel";
 									reg = <0x664>;
 									#clock-cells = <0x02>;
-									#address-cells = <0x00>;
+									#address-cells = <0x01>;
+									#size-cells = <0x00>;
 
-									clock-ehrpwm0-tbclk {
+									clock-ehrpwm0-tbclk@0 {
+										reg = <0x00>;
 										#clock-cells = <0x00>;
 										compatible = "ti,gate-clock";
 										clock-output-names = "ehrpwm0_tbclk";
 										clocks = <0x32>;
-										ti,bit-shift = <0x00>;
 										phandle = <0x48>;
 									};
 
-									clock-ehrpwm1-tbclk {
+									clock-ehrpwm1-tbclk@1 {
+										reg = <0x01>;
 										#clock-cells = <0x00>;
 										compatible = "ti,gate-clock";
 										clock-output-names = "ehrpwm1_tbclk";
 										clocks = <0x32>;
-										ti,bit-shift = <0x01>;
 										phandle = <0x49>;
 									};
 
-									clock-ehrpwm2-tbclk {
+									clock-ehrpwm2-tbclk@2 {
+										reg = <0x02>;
 										#clock-cells = <0x00>;
 										compatible = "ti,gate-clock";
 										clock-output-names = "ehrpwm2_tbclk";
 										clocks = <0x32>;
-										ti,bit-shift = <0x02>;
 										phandle = <0x4a>;
 									};
 								};
@@ -2225,52 +2234,68 @@
 						cape_eeprom0@54 {
 							compatible = "atmel,24c256";
 							reg = <0x54>;
-							#address-cells = <0x01>;
-							#size-cells = <0x01>;
 							phandle = <0xbc>;
 
-							cape_data@0 {
-								reg = <0x00 0x100>;
-								phandle = <0xbd>;
+							nvmem-layout {
+								compatible = "fixed-layout";
+								#address-cells = <0x01>;
+								#size-cells = <0x01>;
+
+								cape_data@0 {
+									reg = <0x00 0x100>;
+									phandle = <0xbd>;
+								};
 							};
 						};
 
 						cape_eeprom1@55 {
 							compatible = "atmel,24c256";
 							reg = <0x55>;
-							#address-cells = <0x01>;
-							#size-cells = <0x01>;
 							phandle = <0xbe>;
 
-							cape_data@0 {
-								reg = <0x00 0x100>;
-								phandle = <0xbf>;
+							nvmem-layout {
+								compatible = "fixed-layout";
+								#address-cells = <0x01>;
+								#size-cells = <0x01>;
+
+								cape_data@0 {
+									reg = <0x00 0x100>;
+									phandle = <0xbf>;
+								};
 							};
 						};
 
 						cape_eeprom2@56 {
 							compatible = "atmel,24c256";
 							reg = <0x56>;
-							#address-cells = <0x01>;
-							#size-cells = <0x01>;
 							phandle = <0xc0>;
 
-							cape_data@0 {
-								reg = <0x00 0x100>;
-								phandle = <0xc1>;
+							nvmem-layout {
+								compatible = "fixed-layout";
+								#address-cells = <0x01>;
+								#size-cells = <0x01>;
+
+								cape_data@0 {
+									reg = <0x00 0x100>;
+									phandle = <0xc1>;
+								};
 							};
 						};
 
 						cape_eeprom3@57 {
 							compatible = "atmel,24c256";
 							reg = <0x57>;
-							#address-cells = <0x01>;
-							#size-cells = <0x01>;
 							phandle = <0xc2>;
 
-							cape_data@0 {
-								reg = <0x00 0x100>;
-								phandle = <0xc3>;
+							nvmem-layout {
+								compatible = "fixed-layout";
+								#address-cells = <0x01>;
+								#size-cells = <0x01>;
+
+								cape_data@0 {
+									reg = <0x00 0x100>;
+									phandle = <0xc3>;
+								};
 							};
 						};
 					};
@@ -3109,7 +3134,7 @@
 								reg = <0x00>;
 								reset-gpios = <0x28 0x08 0x01>;
 								reset-assert-us = <0x12c>;
-								reset-deassert-us = <0xc350>;
+								reset-deassert-us = <0x32c8>;
 								phandle = <0x54>;
 							};
 						};
@@ -3622,6 +3647,12 @@
 			#address-cells = <0x01>;
 			#size-cells = <0x01>;
 			ranges = <0x00 0x56000000 0x1000000>;
+
+			gpu@0 {
+				compatible = "ti,omap3630-gpu", "img,powervr-sgx530";
+				reg = <0x00 0x10000>;
+				interrupts = <0x25>;
+			};
 		};
 	};
 
@@ -3763,11 +3794,11 @@
 		gpio0_dbclk_mux_ck = "/ocp/interconnect@44c00000/segment@200000/target-module@0/prcm@0/clocks/clock-gpio0-dbclk-mux@53c";
 		lcd_gclk = "/ocp/interconnect@44c00000/segment@200000/target-module@0/prcm@0/clocks/clock-lcd-gclk@534";
 		mmc_clk = "/ocp/interconnect@44c00000/segment@200000/target-module@0/prcm@0/clocks/clock-mmc";
-		gfx_fclk_clksel_ck = "/ocp/interconnect@44c00000/segment@200000/target-module@0/prcm@0/clocks/clock@52c/clock-gfx-fclk-clksel";
-		gfx_fck_div_ck = "/ocp/interconnect@44c00000/segment@200000/target-module@0/prcm@0/clocks/clock@52c/clock-gfx-fck-div";
-		sysclkout_pre_ck = "/ocp/interconnect@44c00000/segment@200000/target-module@0/prcm@0/clocks/clock@700/clock-sysclkout-pre";
-		clkout2_div_ck = "/ocp/interconnect@44c00000/segment@200000/target-module@0/prcm@0/clocks/clock@700/clock-clkout2-div";
-		clkout2_ck = "/ocp/interconnect@44c00000/segment@200000/target-module@0/prcm@0/clocks/clock@700/clock-clkout2";
+		gfx_fclk_clksel_ck = "/ocp/interconnect@44c00000/segment@200000/target-module@0/prcm@0/clocks/clock@52c/clock-gfx-fclk-clksel@1";
+		gfx_fck_div_ck = "/ocp/interconnect@44c00000/segment@200000/target-module@0/prcm@0/clocks/clock@52c/clock-gfx-fck-div@0";
+		sysclkout_pre_ck = "/ocp/interconnect@44c00000/segment@200000/target-module@0/prcm@0/clocks/clock@700/clock-sysclkout-pre@0";
+		clkout2_div_ck = "/ocp/interconnect@44c00000/segment@200000/target-module@0/prcm@0/clocks/clock@700/clock-clkout2-div@3";
+		clkout2_ck = "/ocp/interconnect@44c00000/segment@200000/target-module@0/prcm@0/clocks/clock@700/clock-clkout2@7";
 		prcm_clockdomains = "/ocp/interconnect@44c00000/segment@200000/target-module@0/prcm@0/clockdomains";
 		per_cm = "/ocp/interconnect@44c00000/segment@200000/target-module@0/prcm@0/clock@0";
 		l4ls_clkctrl = "/ocp/interconnect@44c00000/segment@200000/target-module@0/prcm@0/clock@0/clock@38";
@@ -3810,7 +3841,7 @@
 		ldo3_reg = "/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tps@24/regulators/regulator@5";
 		ldo4_reg = "/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tps@24/regulators/regulator@6";
 		baseboard_eeprom = "/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/baseboard_eeprom@50";
-		baseboard_data = "/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/baseboard_eeprom@50/baseboard_data@0";
+		baseboard_data = "/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/baseboard_eeprom@50/nvmem-layout/baseboard_data@0";
 		tda19988 = "/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70";
 		hdmi_0 = "/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70/ports/port@0/endpoint";
 		tscadc = "/ocp/interconnect@44c00000/segment@200000/target-module@d000/tscadc@0";
@@ -3845,9 +3876,9 @@
 		sha0_fck = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/scm_conf@0/clocks/clock-sha0-fck";
 		aes0_fck = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/scm_conf@0/clocks/clock-aes0-fck";
 		rng_fck = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/scm_conf@0/clocks/clock-rng-fck";
-		ehrpwm0_tbclk = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/scm_conf@0/clocks/clock@664/clock-ehrpwm0-tbclk";
-		ehrpwm1_tbclk = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/scm_conf@0/clocks/clock@664/clock-ehrpwm1-tbclk";
-		ehrpwm2_tbclk = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/scm_conf@0/clocks/clock@664/clock-ehrpwm2-tbclk";
+		ehrpwm0_tbclk = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/scm_conf@0/clocks/clock@664/clock-ehrpwm0-tbclk@0";
+		ehrpwm1_tbclk = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/scm_conf@0/clocks/clock@664/clock-ehrpwm1-tbclk@1";
+		ehrpwm2_tbclk = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/scm_conf@0/clocks/clock@664/clock-ehrpwm2-tbclk@2";
 		usb_ctrl_mod = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/control@620";
 		wkup_m3_ipc = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/wkup_m3_ipc@1324";
 		edma_xbar = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/dma-router@f90";
@@ -3878,13 +3909,13 @@
 		hwspinlock = "/ocp/interconnect@48000000/segment@0/target-module@ca000/spinlock@0";
 		i2c2 = "/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0";
 		cape_eeprom0 = "/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/cape_eeprom0@54";
-		cape0_data = "/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/cape_eeprom0@54/cape_data@0";
+		cape0_data = "/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/cape_eeprom0@54/nvmem-layout/cape_data@0";
 		cape_eeprom1 = "/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/cape_eeprom1@55";
-		cape1_data = "/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/cape_eeprom1@55/cape_data@0";
+		cape1_data = "/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/cape_eeprom1@55/nvmem-layout/cape_data@0";
 		cape_eeprom2 = "/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/cape_eeprom2@56";
-		cape2_data = "/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/cape_eeprom2@56/cape_data@0";
+		cape2_data = "/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/cape_eeprom2@56/nvmem-layout/cape_data@0";
 		cape_eeprom3 = "/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/cape_eeprom3@57";
-		cape3_data = "/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/cape_eeprom3@57/cape_data@0";
+		cape3_data = "/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/cape_eeprom3@57/nvmem-layout/cape_data@0";
 		spi1 = "/ocp/interconnect@48000000/segment@100000/target-module@a0000/spi@0";
 		uart3 = "/ocp/interconnect@48000000/segment@100000/target-module@a6000/serial@0";
 		uart4 = "/ocp/interconnect@48000000/segment@100000/target-module@a8000/serial@0";
