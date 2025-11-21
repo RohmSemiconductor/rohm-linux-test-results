@@ -1,0 +1,44 @@
+BuildBot project: linux-next
+Linux version: next-20251119
+Commit hash: fe4d0dea039f2befb93f27569593ec209843b0f5
+
+Kunit test result: test_linear_ranges: PASSED
+
+Kunit test result: iio_test_gts: PASSED
+
+Testing: bd79703 ADDAC
+Test results: bd79703: PASSED
+
+Git bisect state: success
+7d67ddc5f0148b3a03594a45bba5547e92640c89 is the first bad commit
+commit 7d67ddc5f0148b3a03594a45bba5547e92640c89
+Author: Saravana Kannan <saravanak@google.com>
+Date:   Wed Oct 15 09:13:48 2025 +0200
+
+    Revert "treewide: Fix probing of devices in DT overlays"
+    
+    This reverts commit 1a50d9403fb90cbe4dea0ec9fd0351d2ecbd8924.
+    
+    While the commit fixed fw_devlink overlay handling for one case, it
+    broke it for another case. So revert it and redo the fix in a separate
+    patch.
+    
+    Fixes: 1a50d9403fb9 ("treewide: Fix probing of devices in DT overlays")
+    Reported-by: Herve Codina <herve.codina@bootlin.com>
+    Closes: https://lore.kernel.org/lkml/CAMuHMdXEnSD4rRJ-o90x4OprUacN_rJgyo8x6=9F9rZ+-KzjOg@mail.gmail.com/
+    Closes: https://lore.kernel.org/all/20240221095137.616d2aaa@bootlin.com/
+    Closes: https://lore.kernel.org/lkml/20240312151835.29ef62a0@bootlin.com/
+    Signed-off-by: Saravana Kannan <saravanak@google.com>
+    Link: https://lore.kernel.org/lkml/20240411235623.1260061-2-saravanak@google.com/
+    Signed-off-by: Herve Codina <herve.codina@bootlin.com>
+    Acked-by: Mark Brown <broonie@kernel.org>
+    Link: https://patch.msgid.link/20251015071420.1173068-2-herve.codina@bootlin.com
+    Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+
+ drivers/bus/imx-weim.c    | 6 ------
+ drivers/i2c/i2c-core-of.c | 5 -----
+ drivers/of/dynamic.c      | 1 -
+ drivers/of/platform.c     | 5 -----
+ drivers/spi/spi.c         | 5 -----
+ 5 files changed, 22 deletions(-)
+
