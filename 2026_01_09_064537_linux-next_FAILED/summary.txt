@@ -1,0 +1,150 @@
+BuildBot project: linux-next
+Linux version: next-20260109
+Commit hash: f417b7ffcbef7d76b0d8860518f50dae0e7e5eda
+
+Login failed: Power port 0: beagle1. Returncode: Received: 1, Expected: 0
+Testing: bd9576 PMIC
+Test results: bd9576: FAILED
+
+Testing: bd71847 PMIC
+Test results: bd71847: FAILED
+
+Testing: bd71815 PMIC
+Test results: bd71815: FAILED
+
+Testing: bd71828 PMIC
+Test results: bd71828: FAILED
+
+Testing: bd96801 PMIC
+Test results: bd96801: FAILED
+
+Testing: bd71837 PMIC
+Test results: bd71837: FAILED
+
+Testing: bd96802 PMIC
+Test results: bd96802: FAILED
+
+Testing: bd96805 PMIC
+Test results: bd96805: FAILED
+
+Testing: bd96806 PMIC
+Test results: bd96806: FAILED
+
+Git bisect state: success
+9d0577d7df9739fd6d96728793b4c06b4aaf5e4f is the first bad commit
+commit 9d0577d7df9739fd6d96728793b4c06b4aaf5e4f
+Author: Mike Rapoport (Microsoft) <rppt@kernel.org>
+Date:   Fri Jan 2 08:59:58 2026 +0200
+
+    arch, mm: consolidate initialization of nodes, zones and memory map
+    
+    To initialize node, zone and memory map data structures every architecture
+    calls free_area_init() during setup_arch() and passes it an array of zone
+    limits.
+    
+    Beside code duplication it creates "interesting" ordering cases between
+    allocation and initialization of hugetlb and the memory map.  Some
+    architectures allocate hugetlb pages very early in setup_arch() in certain
+    cases, some only create hugetlb CMA areas in setup_arch() and sometimes
+    hugetlb allocations happen mm_core_init().
+    
+    With arch_zone_limits_init() helper available now on all architectures it
+    is no longer necessary to call free_area_init() from architecture setup
+    code.  Rather core MM initialization can call arch_zone_limits_init() in a
+    single place.
+    
+    This allows to unify ordering of hugetlb vs memory map allocation and
+    initialization.
+    
+    Remove the call to free_area_init() from architecture specific code and
+    place it in a new mm_core_init_early() function that is called immediately
+    after setup_arch().
+    
+    After this refactoring it is possible to consolidate hugetlb allocations
+    and eliminate differences in ordering of hugetlb and memory map
+    initialization among different architectures.
+    
+    As the first step of this consolidation move hugetlb_bootmem_alloc() to
+    mm_core_early_init().
+    
+    Link: https://lkml.kernel.org/r/20260102070005.65328-23-rppt@kernel.org
+    Signed-off-by: Mike Rapoport (Microsoft) <rppt@kernel.org>
+    Cc: Alexander Gordeev <agordeev@linux.ibm.com>
+    Cc: Alex Shi <alexs@kernel.org>
+    Cc: Andreas Larsson <andreas@gaisler.com>
+    Cc: Borislav Betkov <bp@alien8.de>
+    Cc: Catalin Marinas <catalin.marinas@arm.com>
+    Cc: David Hildenbrand (Red Hat) <david@kernel.org>
+    Cc: David S. Miller <davem@davemloft.net>
+    Cc: Dinh Nguyen <dinguyen@kernel.org>
+    Cc: Geert Uytterhoeven <geert@linux-m68k.org>
+    Cc: Guo Ren <guoren@kernel.org>
+    Cc: Heiko Carstens <hca@linux.ibm.com>
+    Cc: Helge Deller <deller@gmx.de>
+    Cc: Huacai Chen <chenhuacai@kernel.org>
+    Cc: Ingo Molnar <mingo@redhat.com>
+    Cc: Johannes Berg <johannes@sipsolutions.net>
+    Cc: John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
+    Cc: Jonathan Corbet <corbet@lwn.net>
+    Cc: Liam Howlett <liam.howlett@oracle.com>
+    Cc: Lorenzo Stoakes <lorenzo.stoakes@oracle.com>
+    Cc: Magnus Lindholm <linmag7@gmail.com>
+    Cc: Matt Turner <mattst88@gmail.com>
+    Cc: Max Filippov <jcmvbkbc@gmail.com>
+    Cc: Michael Ellerman <mpe@ellerman.id.au>
+    Cc: Michal Hocko <mhocko@suse.com>
+    Cc: Michal Simek <monstr@monstr.eu>
+    Cc: Muchun Song <muchun.song@linux.dev>
+    Cc: Oscar Salvador <osalvador@suse.de>
+    Cc: Palmer Dabbelt <palmer@dabbelt.com>
+    Cc: Pratyush Yadav <pratyush@kernel.org>
+    Cc: Richard Weinberger <richard@nod.at>
+    Cc: Russell King <linux@armlinux.org.uk>
+    Cc: Stafford Horne <shorne@gmail.com>
+    Cc: Suren Baghdasaryan <surenb@google.com>
+    Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
+    Cc: Thomas Gleinxer <tglx@linutronix.de>
+    Cc: Vasily Gorbik <gor@linux.ibm.com>
+    Cc: Vineet Gupta <vgupta@kernel.org>
+    Cc: Vlastimil Babka <vbabka@suse.cz>
+    Cc: Will Deacon <will@kernel.org>
+    Cc: Frank van der Linden <fvdl@google.com>
+    Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
+
+ arch/alpha/mm/init.c                 |  9 +--------
+ arch/arc/mm/init.c                   |  5 -----
+ arch/arm/mm/init.c                   | 16 ----------------
+ arch/arm64/mm/init.c                 |  4 ----
+ arch/csky/kernel/setup.c             |  4 ----
+ arch/hexagon/mm/init.c               | 12 ------------
+ arch/loongarch/include/asm/pgtable.h |  2 --
+ arch/loongarch/kernel/setup.c        |  2 --
+ arch/loongarch/mm/init.c             |  8 --------
+ arch/m68k/mm/init.c                  |  3 ---
+ arch/m68k/mm/mcfmmu.c                |  3 ---
+ arch/m68k/mm/motorola.c              |  6 +-----
+ arch/m68k/mm/sun3mmu.c               |  9 ---------
+ arch/microblaze/mm/init.c            |  7 -------
+ arch/mips/loongson64/numa.c          |  4 ----
+ arch/mips/mm/init.c                  |  5 -----
+ arch/mips/sgi-ip27/ip27-memory.c     |  4 ----
+ arch/nios2/mm/init.c                 |  6 ------
+ arch/openrisc/mm/init.c              | 10 ----------
+ arch/parisc/mm/init.c                |  9 ---------
+ arch/powerpc/mm/mem.c                |  4 ----
+ arch/riscv/mm/init.c                 |  9 ---------
+ arch/s390/mm/init.c                  |  5 -----
+ arch/sh/mm/init.c                    |  5 -----
+ arch/sparc/mm/init_64.c              | 11 -----------
+ arch/sparc/mm/srmmu.c                |  7 -------
+ arch/um/kernel/mem.c                 |  5 -----
+ arch/x86/mm/init.c                   | 10 ----------
+ arch/x86/mm/init_32.c                |  1 -
+ arch/x86/mm/init_64.c                |  2 --
+ arch/x86/mm/mm_internal.h            |  1 -
+ arch/xtensa/mm/init.c                |  4 ----
+ include/linux/mm.h                   |  4 ++--
+ init/main.c                          |  1 +
+ mm/mm_init.c                         | 18 ++++++++++--------
+ 35 files changed, 15 insertions(+), 200 deletions(-)
+
