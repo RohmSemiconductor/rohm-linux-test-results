@@ -71,64 +71,64 @@
 		syscon = <0x06>;
 		phandle = <0x02>;
 
-		opp50-300000000 {
+		opp-50-300000000 {
 			opp-hz = <0x00 0x11e1a300>;
 			opp-microvolt = <0xe7ef0 0xe34b8 0xec928>;
 			opp-supported-hw = <0x06 0x10>;
 			opp-suspend;
 		};
 
-		opp100-275000000 {
+		opp-100-275000000 {
 			opp-hz = <0x00 0x10642ac0>;
 			opp-microvolt = <0x10c8e0 0x1072f0 0x111ed0>;
 			opp-supported-hw = <0x01 0xff>;
 			opp-suspend;
 		};
 
-		opp100-300000000 {
+		opp-100-300000000 {
 			opp-hz = <0x00 0x11e1a300>;
 			opp-microvolt = <0x10c8e0 0x1072f0 0x111ed0>;
 			opp-supported-hw = <0x06 0x20>;
 			opp-suspend;
 		};
 
-		opp100-500000000 {
+		opp-100-500000000 {
 			opp-hz = <0x00 0x1dcd6500>;
 			opp-microvolt = <0x10c8e0 0x1072f0 0x111ed0>;
 			opp-supported-hw = <0x01 0xffff>;
 		};
 
-		opp100-600000000 {
+		opp-100-600000000 {
 			opp-hz = <0x00 0x23c34600>;
 			opp-microvolt = <0x10c8e0 0x1072f0 0x111ed0>;
 			opp-supported-hw = <0x06 0x40>;
 		};
 
-		opp120-600000000 {
+		opp-120-600000000 {
 			opp-hz = <0x00 0x23c34600>;
 			opp-microvolt = <0x124f80 0x11f1c0 0x12ad40>;
 			opp-supported-hw = <0x01 0xffff>;
 		};
 
-		opp120-720000000 {
+		opp-120-720000000 {
 			opp-hz = <0x00 0x2aea5400>;
 			opp-microvolt = <0x124f80 0x11f1c0 0x12ad40>;
 			opp-supported-hw = <0x06 0x80>;
 		};
 
-		oppturbo-720000000 {
+		opp-720000000 {
 			opp-hz = <0x00 0x2aea5400>;
 			opp-microvolt = <0x1339e0 0x12d770 0x139c50>;
 			opp-supported-hw = <0x01 0xffff>;
 		};
 
-		oppturbo-800000000 {
+		opp-800000000 {
 			opp-hz = <0x00 0x2faf0800>;
 			opp-microvolt = <0x1339e0 0x12d770 0x139c50>;
 			opp-supported-hw = <0x06 0x100>;
 		};
 
-		oppnitro-1000000000 {
+		opp-1000000000 {
 			opp-hz = <0x00 0x3b9aca00>;
 			opp-microvolt = <0x1437c8 0x13d044 0x149f4c>;
 			opp-supported-hw = <0x06 0x100>;
@@ -1212,9 +1212,9 @@
 						baseboard_eeprom@50 {
 							compatible = "atmel,24c256";
 							reg = <0x50>;
+							vcc-supply = <0x27>;
 							#address-cells = <0x01>;
 							#size-cells = <0x01>;
-							vcc-supply = <0x27>;
 							phandle = <0x97>;
 
 							baseboard_data@0 {
@@ -1236,10 +1236,13 @@
 							phandle = <0x68>;
 
 							ports {
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
 
 								port@0 {
+									reg = <0x00>;
 
-									endpoint@0 {
+									endpoint {
 										remote-endpoint = <0x2b>;
 										phandle = <0x4c>;
 									};
@@ -1313,72 +1316,72 @@
 							pinctrl-0 = <0x2d>;
 							phandle = <0x23>;
 
-							user_leds_s0 {
+							user-leds-s0-pins {
 								pinctrl-single,pins = <0x54 0x00 0x07 0x58 0x10 0x07 0x5c 0x00 0x07 0x60 0x10 0x07>;
 								phandle = <0x63>;
 							};
 
-							pinmux_i2c0_pins {
+							i2c0-pins {
 								pinctrl-single,pins = <0x188 0x30 0x00 0x18c 0x30 0x00>;
 								phandle = <0x26>;
 							};
 
-							pinmux_i2c2_pins {
+							i2c2-pins {
 								pinctrl-single,pins = <0x178 0x30 0x03 0x17c 0x30 0x03>;
 								phandle = <0x40>;
 							};
 
-							pinmux_uart0_pins {
+							uart0-pins {
 								pinctrl-single,pins = <0x170 0x30 0x00 0x174 0x00 0x00>;
 								phandle = <0x25>;
 							};
 
-							pinmux_clkout2_pin {
+							clkout2-pins {
 								pinctrl-single,pins = <0x1b4 0x00 0x03>;
 								phandle = <0x2d>;
 							};
 
-							cpsw_default {
+							cpsw-default-pins {
 								pinctrl-single,pins = <0x110 0x30 0x00 0x114 0x00 0x00 0x118 0x30 0x00 0x11c 0x00 0x00 0x120 0x00 0x00 0x124 0x00 0x00 0x128 0x00 0x00 0x12c 0x30 0x00 0x130 0x30 0x00 0x134 0x30 0x00 0x138 0x30 0x00 0x13c 0x30 0x00 0x140 0x30 0x00>;
 								phandle = <0x52>;
 							};
 
-							cpsw_sleep {
+							cpsw-sleep-pins {
 								pinctrl-single,pins = <0x110 0x20 0x07 0x114 0x20 0x07 0x118 0x20 0x07 0x11c 0x20 0x07 0x120 0x20 0x07 0x124 0x20 0x07 0x128 0x20 0x07 0x12c 0x20 0x07 0x130 0x20 0x07 0x134 0x20 0x07 0x138 0x20 0x07 0x13c 0x20 0x07 0x140 0x20 0x07>;
 								phandle = <0x53>;
 							};
 
-							davinci_mdio_default {
+							davinci-mdio-default-pins {
 								pinctrl-single,pins = <0x148 0x30 0x00 0x14c 0x10 0x00 0x168 0x10 0x07>;
 								phandle = <0x55>;
 							};
 
-							davinci_mdio_sleep {
+							davinci-mdio-sleep-pins {
 								pinctrl-single,pins = <0x148 0x20 0x07 0x14c 0x20 0x07 0x168 0x20 0x07>;
 								phandle = <0x56>;
 							};
 
-							pinmux_mmc1_pins {
+							mmc1-pins {
 								pinctrl-single,pins = <0x160 0x28 0x07 0xfc 0x30 0x00 0xf8 0x30 0x00 0xf4 0x30 0x00 0xf0 0x30 0x00 0x104 0x30 0x00 0x100 0x30 0x00>;
 								phandle = <0x3d>;
 							};
 
-							pinmux_emmc_pins {
+							emmc-pins {
 								pinctrl-single,pins = <0x80 0x30 0x02 0x84 0x30 0x02 0x00 0x30 0x01 0x04 0x30 0x01 0x08 0x30 0x01 0x0c 0x30 0x01 0x10 0x30 0x01 0x14 0x30 0x01 0x18 0x30 0x01 0x1c 0x30 0x01>;
 								phandle = <0x43>;
 							};
 
-							nxp_hdmi_bonelt_pins {
+							nxp-hdmi-bonelt-pins {
 								pinctrl-single,pins = <0x1b0 0x00 0x03 0xa0 0x08 0x00 0xa4 0x08 0x00 0xa8 0x08 0x00 0xac 0x08 0x00 0xb0 0x08 0x00 0xb4 0x08 0x00 0xb8 0x08 0x00 0xbc 0x08 0x00 0xc0 0x08 0x00 0xc4 0x08 0x00 0xc8 0x08 0x00 0xcc 0x08 0x00 0xd0 0x08 0x00 0xd4 0x08 0x00 0xd8 0x08 0x00 0xdc 0x08 0x00 0xe0 0x00 0x00 0xe4 0x00 0x00 0xe8 0x00 0x00 0xec 0x00 0x00>;
 								phandle = <0x29>;
 							};
 
-							nxp_hdmi_bonelt_off_pins {
+							nxp-hdmi-bonelt-off-pins {
 								pinctrl-single,pins = <0x1b0 0x00 0x03>;
 								phandle = <0x2a>;
 							};
 
-							mcasp0_pins {
+							mcasp0-pins {
 								pinctrl-single,pins = <0x1ac 0x30 0x00 0x19c 0x00 0x02 0x194 0x10 0x00 0x190 0x00 0x00 0x6c 0x00 0x07>;
 								phandle = <0x3b>;
 							};
@@ -3809,25 +3812,25 @@
 		baseboard_eeprom = "/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/baseboard_eeprom@50";
 		baseboard_data = "/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/baseboard_eeprom@50/baseboard_data@0";
 		tda19988 = "/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70";
-		hdmi_0 = "/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70/ports/port@0/endpoint@0";
+		hdmi_0 = "/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70/ports/port@0/endpoint";
 		tscadc = "/ocp/interconnect@44c00000/segment@200000/target-module@d000/tscadc@0";
 		am335x_adc = "/ocp/interconnect@44c00000/segment@200000/target-module@d000/tscadc@0/adc";
 		scm = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0";
 		am33xx_pinmux = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800";
-		user_leds_s0 = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/user_leds_s0";
-		i2c0_pins = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/pinmux_i2c0_pins";
-		i2c2_pins = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/pinmux_i2c2_pins";
-		uart0_pins = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/pinmux_uart0_pins";
-		clkout2_pin = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/pinmux_clkout2_pin";
-		cpsw_default = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/cpsw_default";
-		cpsw_sleep = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/cpsw_sleep";
-		davinci_mdio_default = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/davinci_mdio_default";
-		davinci_mdio_sleep = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/davinci_mdio_sleep";
-		mmc1_pins = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/pinmux_mmc1_pins";
-		emmc_pins = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/pinmux_emmc_pins";
-		nxp_hdmi_bonelt_pins = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/nxp_hdmi_bonelt_pins";
-		nxp_hdmi_bonelt_off_pins = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/nxp_hdmi_bonelt_off_pins";
-		mcasp0_pins = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/mcasp0_pins";
+		user_leds_s0 = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/user-leds-s0-pins";
+		i2c0_pins = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/i2c0-pins";
+		i2c2_pins = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/i2c2-pins";
+		uart0_pins = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/uart0-pins";
+		clkout2_pin = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/clkout2-pins";
+		cpsw_default = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/cpsw-default-pins";
+		cpsw_sleep = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/cpsw-sleep-pins";
+		davinci_mdio_default = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/davinci-mdio-default-pins";
+		davinci_mdio_sleep = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/davinci-mdio-sleep-pins";
+		mmc1_pins = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/mmc1-pins";
+		emmc_pins = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/emmc-pins";
+		nxp_hdmi_bonelt_pins = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/nxp-hdmi-bonelt-pins";
+		nxp_hdmi_bonelt_off_pins = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/nxp-hdmi-bonelt-off-pins";
+		mcasp0_pins = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/mcasp0-pins";
 		scm_conf = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/scm_conf@0";
 		phy_gmii_sel = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/scm_conf@0/phy-gmii-sel";
 		scm_clocks = "/ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/scm_conf@0/clocks";
