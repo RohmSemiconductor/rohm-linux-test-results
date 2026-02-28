@@ -1,0 +1,21 @@
+Labgrid Console Logfile for main
+Logfile started at 2026-02-27 17:38:45.036126
+=== Log starts here ===
+
+root@arm:~# run() { echo -n "$MARKER"; sh -c "$@"; echo "$MARKER $?"; }
+root@arm:~# echo 'QGNC''LWCKKQ'
+QGNCLWCKKQ
+root@arm:~# MARKER='WFVK''CZSPSA' run 'grep -r -l rohm,bd96801 /proc/device-tree  | sed '"'"'s![^/]*$!!'"'"''
+WFVKCZSPSA/proc/device-tree/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/pmic@60/
+WFVKCZSPSA 0
+root@arm:~# echo 'NYKZ''WVMZYB'
+NYKZWVMZYB
+root@arm:~# MARKER='HQVS''OHJHZV' run 'test -f /proc/device-tree/ocp/interconnectt\@48000000/segment\@100000/target-module\@9c000/i2c\@0/pmic\@60/regulators/buck11/rohm,no-regulator-enable-control ;echo $?'
+HQVSOHJHZV1
+HQVSOHJHZV 0
+root@arm:~# echo 'BVXM''JGXOUG'
+BVXMJGXOUG
+root@arm:~# MARKER='NLJL''MSHJOW' run 'i2cget -y -f 2 0x60 0xb'
+NLJLMSHJOWError: Could not open file `/dev/i2c-2' or `/dev/i2c/2': No such file or directory
+NLJLMSHJOW 1
+root@arm:~# 
