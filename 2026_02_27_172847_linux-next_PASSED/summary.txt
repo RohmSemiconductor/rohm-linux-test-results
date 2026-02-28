@@ -1,0 +1,49 @@
+BuildBot project: linux-next
+Linux version: next-20260227
+Commit hash: 3fa5e5702a82d259897bd7e209469bc06368bf31
+
+Kunit test result: test_linear_ranges: PASSED
+
+Kunit test result: iio_test_gts: PASSED
+
+Testing: bd79703 ADDAC
+Test results: bd79703: PASSED
+
+Git bisect state: success
+0ab80451c70f52da3f0dfeb9934481abf3790f7e is the first bad commit
+commit 0ab80451c70f52da3f0dfeb9934481abf3790f7e
+Author: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Date:   Mon Feb 23 10:05:47 2026 +0100
+
+    i2c: allow setting the parent device and OF node through the adapter struct
+    
+    In order to stop i2c bus drivers from dereferencing the struct device
+    embedded in struct i2c_adapter, let's allow configuring the parent
+    device and OF-node of the adapter directly through dedicated fields.
+    Convert some users as well.
+    
+    Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+    [wsa: squash user conversions]
+    Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com> # for bcm-kona and bcm2835
+    Reviewed-by: Andreas Kemnade <andreas@kemnade.info> # for omap
+    Reviewed-by: Patrice Chotard <patrice.chotard@foss.st.com> # for st
+    Reviewed-by: Frank Li <Frank.Li@nxp.com> # for mxs
+    Acked-by: Linus Walleij <linusw@kernel.org> # for nomadik
+    Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com> # for bcm2835
+    Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+
+ drivers/i2c/busses/i2c-bcm-kona.c   | 4 ++--
+ drivers/i2c/busses/i2c-bcm2835.c    | 4 ++--
+ drivers/i2c/busses/i2c-gpio.c       | 2 +-
+ drivers/i2c/busses/i2c-highlander.c | 2 +-
+ drivers/i2c/busses/i2c-keba.c       | 2 +-
+ drivers/i2c/busses/i2c-mxs.c        | 4 ++--
+ drivers/i2c/busses/i2c-nomadik.c    | 4 ++--
+ drivers/i2c/busses/i2c-omap.c       | 4 ++--
+ drivers/i2c/busses/i2c-qcom-geni.c  | 4 ++--
+ drivers/i2c/busses/i2c-rcar.c       | 6 +++---
+ drivers/i2c/busses/i2c-st.c         | 4 ++--
+ drivers/i2c/i2c-core-base.c         | 5 +++++
+ include/linux/i2c.h                 | 4 ++++
+ 13 files changed, 29 insertions(+), 20 deletions(-)
+
