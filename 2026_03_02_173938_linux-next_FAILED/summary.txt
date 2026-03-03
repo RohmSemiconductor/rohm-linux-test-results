@@ -1,0 +1,34 @@
+BuildBot project: linux-next
+Linux version: next-20260302
+Commit hash: d517cb8cea012f43b069617fc8179b45404f8018
+
+Kunit test result: test_linear_ranges: PASSED
+
+Kunit test result: iio_test_gts: PASSED
+
+Testing: kx022acr_z sensor
+Test results: kx022acr_z: FAILED
+
+Testing: kx132acr_lbz sensor
+Test results: kx132acr_lbz: FAILED
+
+Git bisect state: success
+ab4371b544797f461883f9dcfeaa6ca6185b9593 is the first bad commit
+commit ab4371b544797f461883f9dcfeaa6ca6185b9593
+Author: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Date:   Mon Feb 23 09:59:30 2026 +0100
+
+    media: saa7134: rename i2c_dbg() to saa7134_i2c_dbg()
+    
+    Ahead of introducing I2C-adapter-specific printk() helpers, preemptively
+    avoid a conflict with the upcoming i2c_dbg() and rename the local macro
+    in the saa7134 driver to saa7134_i2c_dbg().
+    
+    Suggested-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+    Reviewed-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+    Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+    Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+
+ drivers/media/pci/saa7134/saa7134-i2c.c | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
