@@ -1,0 +1,55 @@
+BuildBot project: linux-next
+Linux version: next-20260302
+Commit hash: d517cb8cea012f43b069617fc8179b45404f8018
+
+Kunit test result: test_linear_ranges: PASSED
+
+Kunit test result: iio_test_gts: PASSED
+
+Testing: bd9576 PMIC
+Test results: bd9576: FAILED
+
+Testing: bd71847 PMIC
+Test results: bd71847: FAILED
+
+Testing: bd71815 PMIC
+Test results: bd71815: FAILED
+
+Testing: bd71828 PMIC
+Test results: bd71828: FAILED
+
+Testing: bd96801 PMIC
+Test results: bd96801: FAILED
+
+Testing: bd71837 PMIC
+Test results: bd71837: FAILED
+
+Testing: bd96802 PMIC
+Test results: bd96802: FAILED
+
+Testing: bd96805 PMIC
+Test results: bd96805: FAILED
+
+Testing: bd96806 PMIC
+Test results: bd96806: FAILED
+
+Git bisect state: success
+ab4371b544797f461883f9dcfeaa6ca6185b9593 is the first bad commit
+commit ab4371b544797f461883f9dcfeaa6ca6185b9593
+Author: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Date:   Mon Feb 23 09:59:30 2026 +0100
+
+    media: saa7134: rename i2c_dbg() to saa7134_i2c_dbg()
+    
+    Ahead of introducing I2C-adapter-specific printk() helpers, preemptively
+    avoid a conflict with the upcoming i2c_dbg() and rename the local macro
+    in the saa7134 driver to saa7134_i2c_dbg().
+    
+    Suggested-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+    Reviewed-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+    Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+    Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+
+ drivers/media/pci/saa7134/saa7134-i2c.c | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+

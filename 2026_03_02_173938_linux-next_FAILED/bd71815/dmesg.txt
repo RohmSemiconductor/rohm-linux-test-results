@@ -1,0 +1,560 @@
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 7.0.0-rc2-next-20260302 (user01@drvtest01) (arm-none-eabi-gcc (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119, GNU ld (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 2.43.1.20241119) #1 SMP Mon Mar  2 17:38:15 EET 2026
+[    0.000000] CPU: ARMv7 Processor [413fc082] revision 2 (ARMv7), cr=10c5387d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] OF: fdt: Machine model: TI AM335x BeagleBone Black
+[    0.000000] Memory policy: Data cache writeback
+[    0.000000] cma: Reserved 16 MiB at 0x9e800000
+[    0.000000] OF: reserved mem: Reserved memory: No reserved-memory node in the DT
+[    0.000000] CPU: All CPU(s) started in SVC mode.
+[    0.000000] AM335X ES2.1 (sgx neon)
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000080000000-0x000000009fdfffff]
+[    0.000000]   HighMem  empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000080000000-0x000000009fdfffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000080000000-0x000000009fdfffff]
+[    0.000000] On node 0, zone Normal: 512 pages in unavailable ranges
+[    0.000000] percpu: Embedded 17 pages/cpu s40780 r8192 d20660 u69632
+[    0.000000] pcpu-alloc: s40780 r8192 d20660 u69632 alloc=17*4096
+[    0.000000] pcpu-alloc: [0] 0 
+[    0.000000] Kernel command line: console=ttyO0,115200n8 root=/dev/nfs rw nfsroot=192.168.255.126:/home/user01/nfs,nfsvers=3 ip=192.168.255.2:192.168.255.126::255.255.255.0:bbb1:eth0 nfsrootdebug
+[    0.000000] Unknown kernel command line parameters "nfsrootdebug", will be passed to user space.
+[    0.000000] printk: log buffer data + meta data: 65536 + 204800 = 270336 bytes
+[    0.000000] Dentry cache hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 32768 (order: 5, 131072 bytes, linear)
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 130560
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] SLUB: HWalign=16, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] rcu: Hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=2 to nr_cpu_ids=1.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 10 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+[    0.000000] IRQ: Found an INTC at 0x(ptrval) (revision 5.0) with 128 interrupts
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] TI gptimer clocksource: always-on /ocp/interconnect@44c00000/segment@200000/target-module@31000
+[    0.000002] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+[    0.000025] clocksource: dmtimer: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+[    0.000562] TI gptimer clockevent: 24000000 Hz at /ocp/interconnect@48000000/segment@0/target-module@40000
+[    0.002141] Console: colour dummy device 80x30
+[    0.002204] WARNING: Your 'console=ttyO0' has been replaced by 'ttyS0'
+[    0.002212] This ensures that you still see kernel messages. Please
+[    0.002216] update your kernel commandline.
+[    0.002258] Calibrating delay loop... 996.14 BogoMIPS (lpj=4980736)
+[    0.090683] CPU: Testing write buffer coherency: ok
+[    0.090803] CPU0: Spectre v2: using BPIALL workaround
+[    0.090814] pid_max: default: 32768 minimum: 301
+[    0.091212] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.091236] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.091849] VFS: Finished mounting rootfs on nullfs
+[    0.093504] CPU0: thread -1, cpu 0, socket -1, mpidr 0
+[    0.093569] cacheinfo: Unable to detect cache hierarchy for CPU 0
+[    0.095703] Setting up static identity map for 0x80100000 - 0x80100078
+[    0.096018] rcu: Hierarchical SRCU implementation.
+[    0.096030] rcu: 	Max phase no-delay instances is 1000.
+[    0.097979] smp: Bringing up secondary CPUs ...
+[    0.098045] smp: Brought up 1 node, 1 CPU
+[    0.098058] SMP: Total of 1 processors activated (996.14 BogoMIPS).
+[    0.098070] CPU: All CPU(s) started in SVC mode.
+[    0.098323] Memory: 479308K/522240K available (12288K kernel code, 1308K rwdata, 3020K rodata, 1024K init, 263K bss, 24444K reserved, 16384K cma-reserved, 0K highmem)
+[    0.099302] devtmpfs: initialized
+[    0.120349] VFP support v0.3: implementor 41 architecture 3 part 30 variant c rev 3
+[    0.120884] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.120984] posixtimers hash table entries: 512 (order: 0, 4096 bytes, linear)
+[    0.121011] futex hash table entries: 256 (16384 bytes on 1 NUMA nodes, total 16 KiB, linear).
+[    0.124383] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.127121] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.127797] audit: initializing netlink subsys (disabled)
+[    0.129273] thermal_sys: Registered thermal governor 'fair_share'
+[    0.129287] thermal_sys: Registered thermal governor 'step_wise'
+[    0.129297] thermal_sys: Registered thermal governor 'user_space'
+[    0.129447] audit: type=2000 audit(0.000:1): state=initialized audit_enabled=0 res=1
+[    0.129487] cpuidle: using governor menu
+[    0.146738] /ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70: Fixed dependency cycle(s) with /ocp/interconnect@48000000/segment@300000/target-module@e000/lcdc@0
+[    0.147846] /ocp/interconnect@48000000/segment@300000/target-module@e000/lcdc@0: Fixed dependency cycle(s) with /ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70
+[    0.150110] No ATAGs?
+[    0.150147] hw-breakpoint: debug architecture 0x4 unsupported.
+[    0.152126] kprobes: kprobe jump-optimization is enabled. All kprobes are optimized if possible.
+[    0.164116] reg-fixed-voltage fixedregulator0: using DT '/fixedregulator0' for '(default)' GPIO lookup
+[    0.164178] of_get_named_gpiod_flags: can't parse 'gpios' property of node '/fixedregulator0[0]'
+[    0.164207] of_get_named_gpiod_flags: can't parse 'gpio' property of node '/fixedregulator0[0]'
+[    0.164225] reg-fixed-voltage fixedregulator0: using lookup tables for GPIO lookup
+[    0.164236] reg-fixed-voltage fixedregulator0: No GPIO consumer (default) found
+[    0.165689] iommu: Default domain type: Translated
+[    0.165705] iommu: DMA domain TLB invalidation policy: strict mode
+[    0.172180] SCSI subsystem initialized
+[    0.172752] libata version 3.00 loaded.
+[    0.173149] pps_core: LinuxPPS API ver. 1 registered
+[    0.173160] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.173186] PTP clock support registered
+[    0.180940] vgaarb: loaded
+[    0.181328] clocksource: Switched to clocksource dmtimer
+[    0.182017] VFS: Disk quotas dquot_6.6.0
+[    0.182099] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+[    0.207251] NET: Registered PF_INET protocol family
+[    0.207661] IP idents hash table entries: 8192 (order: 4, 65536 bytes, linear)
+[    0.208950] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes, linear)
+[    0.208987] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.209005] TCP established hash table entries: 4096 (order: 2, 16384 bytes, linear)
+[    0.209051] TCP bind hash table entries: 4096 (order: 4, 65536 bytes, linear)
+[    0.209151] TCP: Hash tables configured (established 4096 bind 4096)
+[    0.209264] UDP hash table entries: 256 (order: 2, 14336 bytes, linear)
+[    0.209297] UDP-Lite hash table entries: 256 (order: 2, 14336 bytes, linear)
+[    0.209497] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.212715] RPC: Registered named UNIX socket transport module.
+[    0.212739] RPC: Registered udp transport module.
+[    0.212744] RPC: Registered tcp transport module.
+[    0.212749] RPC: Registered tcp-with-tls transport module.
+[    0.212754] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.212778] PCI: CLS 0 bytes, default 64
+[    0.223112] Initialise system trusted keyrings
+[    0.223731] workingset: timestamp_bits=14 (anon: 10) max_order=17 bucket_order=3 (anon: 7)
+[    0.225299] NFS: Registering the id_resolver key type
+[    0.225371] Key type id_resolver registered
+[    0.225378] Key type id_legacy registered
+[    0.225394] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    0.225404] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    0.225505] jffs2: version 2.2. (NAND) (SUMMARY)  © 2001-2006 Red Hat, Inc.
+[    0.226011] Key type asymmetric registered
+[    0.226027] Asymmetric key parser 'x509' registered
+[    0.226118] io scheduler mq-deadline registered
+[    0.226130] io scheduler kyber registered
+[    0.226211] io scheduler bfq registered
+[    0.228187] target-module@4b000000:target-module@140000:pmu@0:fck: device ID is greater than 24
+[    0.231575] ledtrig-cpu: registered to indicate activity on CPUs
+[    0.242227] Serial: 8250/16550 driver, 6 ports, IRQ sharing enabled
+[    0.305115] brd: module loaded
+[    0.314381] loop: module loaded
+[    0.315440] mtdoops: mtd device (mtddev=name/number) must be supplied
+[    0.317106] mdio_bus fixed-0: using lookup tables for GPIO lookup
+[    0.317131] mdio_bus fixed-0: No GPIO consumer reset found
+[    0.318708] i2c_dev: i2c /dev entries driver
+[    0.319763] cpuidle: enable-method property 'ti,am3352' found operations
+[    0.336928] hw perfevents: enabled with armv7_cortex_a8 PMU driver, 5 (8000000f) counters available
+[    0.337511] Initializing XFRM netlink socket
+[    0.337738] NET: Registered PF_INET6 protocol family
+[    0.347397] Segment Routing with IPv6
+[    0.347483] In-situ OAM (IOAM) with IPv6
+[    0.347602] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    0.348594] NET: Registered PF_PACKET protocol family
+[    0.348615] PFKEY is deprecated and scheduled to be removed in 2027, please contact the netdev mailing list
+[    0.348632] NET: Registered PF_KEY protocol family
+[    0.348748] Key type dns_resolver registered
+[    0.348953] ThumbEE CPU extension supported.
+[    0.348975] Registering SWP/SWPB emulation handler
+[    0.349492] omap_voltage_late_init: Voltage driver support not added
+[    0.350163] SmartReflex Class3 initialized
+[    0.375195] Loading compiled-in X.509 certificates
+[    0.435514] /ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70: Fixed dependency cycle(s) with /ocp/interconnect@48000000/segment@300000/target-module@e000/lcdc@0
+[    0.462127] /ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70: Fixed dependency cycle(s) with /ocp/interconnect@48000000/segment@300000/target-module@e000/lcdc@0
+[    0.469031] gpiochip_find_base_unlocked: found new base at 512
+[    0.484932] /ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70: Fixed dependency cycle(s) with /ocp/interconnect@48000000/segment@300000/target-module@e000/lcdc@0
+[    0.485830] /ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70: Fixed dependency cycle(s) with /ocp/interconnect@48000000/segment@300000/target-module@e000/lcdc@0
+[    0.489440] /ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800: Fixed dependency cycle(s) with /ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/clkout2-pins
+[    0.490104] pinctrl-single 44e10800.pinmux: 142 pins, size 568
+[    0.537602] /ocp/interconnect@48000000/segment@300000/target-module@e000/lcdc@0: Fixed dependency cycle(s) with /ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70
+[    0.591172] gpiochip_find_base_unlocked: found new base at 512
+[    0.591254]  gpiochip0: (gpio-0-31): created GPIO range 0->7 ==> 44e10800.pinmux PIN 0->7
+[    0.591273]  gpiochip0: (gpio-0-31): created GPIO range 8->11 ==> 44e10800.pinmux PIN 90->93
+[    0.591288]  gpiochip0: (gpio-0-31): created GPIO range 12->27 ==> 44e10800.pinmux PIN 12->27
+[    0.591683]  gpiochip0: (gpio-0-31): created GPIO range 28->31 ==> 44e10800.pinmux PIN 30->33
+[    0.592684] gpio gpiochip0: (gpio-0-31): added GPIO chardev (254:0)
+[    0.592930] gpio gpiochip0: registered GPIOs 512 to 543 on gpio-0-31
+[    0.593020] OMAP GPIO hardware version 0.1
+[    0.629249] i2c i2c-3: using DT '/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0' for 'scl' GPIO lookup
+[    0.629321] of_get_named_gpiod_flags: can't parse 'scl-gpios' property of node '/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0[0]'
+[    0.629363] of_get_named_gpiod_flags: can't parse 'scl-gpio' property of node '/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0[0]'
+[    0.629399] i2c i2c-3: using lookup tables for GPIO lookup
+[    0.629409] i2c i2c-3: No GPIO consumer scl found
+[    0.629431] i2c i2c-3: using DT '/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0' for 'sda' GPIO lookup
+[    0.629466] of_get_named_gpiod_flags: can't parse 'sda-gpios' property of node '/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0[0]'
+[    0.629502] of_get_named_gpiod_flags: can't parse 'sda-gpio' property of node '/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0[0]'
+[    0.629533] i2c i2c-3: using lookup tables for GPIO lookup
+[    0.629541] i2c i2c-3: No GPIO consumer sda found
+[    0.630271] omap_i2c 4819c000.i2c: bus 3 rev0.11 at 100 kHz
+[    0.647606] gpiochip_find_base_unlocked: found new base at 544
+[    0.647692]  gpiochip1: (gpio-32-63): created GPIO range 0->17 ==> 44e10800.pinmux PIN 34->51
+[    0.647712]  gpiochip1: (gpio-32-63): created GPIO range 18->21 ==> 44e10800.pinmux PIN 77->80
+[    0.647728]  gpiochip1: (gpio-32-63): created GPIO range 22->31 ==> 44e10800.pinmux PIN 56->65
+[    0.648379] gpio gpiochip1: (gpio-32-63): added GPIO chardev (254:1)
+[    0.648595] gpio gpiochip1: registered GPIOs 544 to 575 on gpio-32-63
+[    0.651089] gpiochip_find_base_unlocked: found new base at 576
+[    0.651161]  gpiochip2: (gpio-64-95): created GPIO range 0->4 ==> 44e10800.pinmux PIN 66->70
+[    0.651180]  gpiochip2: (gpio-64-95): created GPIO range 5->6 ==> 44e10800.pinmux PIN 98->99
+[    0.651195]  gpiochip2: (gpio-64-95): created GPIO range 7->8 ==> 44e10800.pinmux PIN 75->76
+[    0.651210]  gpiochip2: (gpio-64-95): created GPIO range 13->13 ==> 44e10800.pinmux PIN 141->141
+[    0.651225]  gpiochip2: (gpio-64-95): created GPIO range 14->21 ==> 44e10800.pinmux PIN 100->107
+[    0.662367] gpio gpiochip2: (gpio-64-95): added GPIO chardev (254:2)
+[    0.662581] gpio gpiochip2: registered GPIOs 576 to 607 on gpio-64-95
+[    0.669287] 48000000.interconnect:segment@200000:target-module@0:mpu@0:fck: device ID is greater than 24
+[    0.670585] sdhci-omap 481d8000.mmc: using DT '/ocp/interconnect@48000000/segment@100000/target-module@d8000/mmc@0' for 'wp' GPIO lookup
+[    0.670651] of_get_named_gpiod_flags: can't parse 'wp-gpios' property of node '/ocp/interconnect@48000000/segment@100000/target-module@d8000/mmc@0[0]'
+[    0.670696] of_get_named_gpiod_flags: can't parse 'wp-gpio' property of node '/ocp/interconnect@48000000/segment@100000/target-module@d8000/mmc@0[0]'
+[    0.670731] sdhci-omap 481d8000.mmc: using lookup tables for GPIO lookup
+[    0.670742] sdhci-omap 481d8000.mmc: No GPIO consumer wp found
+[    0.670920] sdhci-omap 481d8000.mmc: supply pbias not found, using dummy regulator
+[    0.671745] sdhci-omap 481d8000.mmc: supply vqmmc not found, using dummy regulator
+[    0.673912] /ocp/interconnect@48000000/segment@300000/target-module@e000/lcdc@0: Fixed dependency cycle(s) with /ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70
+[    0.691398] /ocp/interconnect@48000000/segment@300000/target-module@e000/lcdc@0: Fixed dependency cycle(s) with /ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70
+[    0.692454] /ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70: Fixed dependency cycle(s) with /ocp/interconnect@48000000/segment@300000/target-module@e000/lcdc@0
+[    0.692630] /ocp/interconnect@48000000/segment@300000/target-module@e000/lcdc@0: Fixed dependency cycle(s) with /ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70
+[    0.717397] mdio_bus 4a101000.mdio: using DT '/ocp/interconnect@4a000000/segment@0/target-module@100000/switch@0/mdio@1000' for 'reset' GPIO lookup
+[    0.717472] of_get_named_gpiod_flags: can't parse 'reset-gpios' property of node '/ocp/interconnect@4a000000/segment@0/target-module@100000/switch@0/mdio@1000[0]'
+[    0.717519] of_get_named_gpiod_flags: can't parse 'reset-gpio' property of node '/ocp/interconnect@4a000000/segment@0/target-module@100000/switch@0/mdio@1000[0]'
+[    0.717564] mdio_bus 4a101000.mdio: using lookup tables for GPIO lookup
+[    0.717574] mdio_bus 4a101000.mdio: No GPIO consumer reset found
+[    0.770576] davinci_mdio 4a101000.mdio: davinci mdio revision 1.6, bus freq 1000000
+[    0.798429] mdio_bus 4a101000.mdio:00: using DT '/ocp/interconnect@4a000000/segment@0/target-module@100000/switch@0/mdio@1000/ethernet-phy@0' for 'reset' GPIO lookup
+[    0.798528] of_get_named_gpiod_flags: parsed 'reset-gpios' property of node '/ocp/interconnect@4a000000/segment@0/target-module@100000/switch@0/mdio@1000/ethernet-phy@0[0]' - status (0)
+[    0.798686] gpio gpiochip0: Persistence not supported for GPIO 8
+[    0.938990] davinci_mdio 4a101000.mdio: phy[0]: device 4a101000.mdio:00, driver SMSC LAN8710/LAN8720
+[    0.939842] cpsw-switch 4a100000.switch: initialized cpsw ale version 1.4
+[    0.939866] cpsw-switch 4a100000.switch: ALE Table size 1024, Policers 0
+[    0.940013] cpsw-switch 4a100000.switch: cpts: overflow check period 500 (jiffies)
+[    0.940028] cpsw-switch 4a100000.switch: CPTS: ref_clk_freq:250000000 calc_mult:2147483648 calc_shift:29 error:0 nsec/sec
+[    0.940158] cpsw-switch 4a100000.switch: Detected MACID = 18:2c:65:25:41:ce
+[    0.942408] cpsw-switch 4a100000.switch: initialized (regs 0x4a100000, pool size 256) hw_ver:0019010C 1.12 (0)
+[    0.980746] debugfs: '49000000.dma' already exists in 'dmaengine'
+[    0.980789] edma 49000000.dma: TI EDMA DMA engine driver
+[    1.043269] ti-sysc 44e31000.target-module: Failed to create device link (0x180) with supplier ocp for /ocp/interconnect@44c00000/segment@200000/target-module@31000/timer@0
+[    1.043332] ti-sysc 48040000.target-module: Failed to create device link (0x180) with supplier ocp for /ocp/interconnect@48000000/segment@0/target-module@40000/timer@0
+[    1.044302] gpio-clk clk_mcasp0: using DT '/clk_mcasp0' for 'enable' GPIO lookup
+[    1.044371] of_get_named_gpiod_flags: parsed 'enable-gpios' property of node '/clk_mcasp0[0]' - status (0)
+[    1.044417] gpio gpiochip0: Persistence not supported for GPIO 27
+[    1.045197] gpiochip_find_base_unlocked: found new base at 608
+[    1.045270]  gpiochip3: (gpio-96-127): created GPIO range 0->7 ==> 44e10800.pinmux PIN 82->89
+[    1.045289]  gpiochip3: (gpio-96-127): created GPIO range 8->11 ==> 44e10800.pinmux PIN 52->55
+[    1.045304]  gpiochip3: (gpio-96-127): created GPIO range 12->15 ==> 44e10800.pinmux PIN 94->97
+[    1.045319]  gpiochip3: (gpio-96-127): created GPIO range 16->17 ==> 44e10800.pinmux PIN 71->72
+[    1.045334]  gpiochip3: (gpio-96-127): created GPIO range 18->18 ==> 44e10800.pinmux PIN 135->135
+[    1.045350]  gpiochip3: (gpio-96-127): created GPIO range 19->20 ==> 44e10800.pinmux PIN 108->109
+[    1.045366]  gpiochip3: (gpio-96-127): created GPIO range 21->21 ==> 44e10800.pinmux PIN 73->73
+[    1.045383]  gpiochip3: (gpio-96-127): created GPIO range 22->23 ==> 44e10800.pinmux PIN 8->9
+[    1.045400]  gpiochip3: (gpio-96-127): created GPIO range 26->27 ==> 44e10800.pinmux PIN 10->11
+[    1.045417]  gpiochip3: (gpio-96-127): created GPIO range 28->28 ==> 44e10800.pinmux PIN 74->74
+[    1.045434]  gpiochip3: (gpio-96-127): created GPIO range 29->29 ==> 44e10800.pinmux PIN 81->81
+[    1.045453]  gpiochip3: (gpio-96-127): created GPIO range 30->31 ==> 44e10800.pinmux PIN 28->29
+[    1.046293] gpio gpiochip3: (gpio-96-127): added GPIO chardev (254:3)
+[    1.046582] gpio gpiochip3: registered GPIOs 608 to 639 on gpio-96-127
+[    1.048477] omap8250 44e09000.serial: using DT '/ocp/interconnect@44c00000/segment@200000/target-module@9000/serial@0' for 'rs485-term' GPIO lookup
+[    1.048546] of_get_named_gpiod_flags: can't parse 'rs485-term-gpios' property of node '/ocp/interconnect@44c00000/segment@200000/target-module@9000/serial@0[0]'
+[    1.048590] of_get_named_gpiod_flags: can't parse 'rs485-term-gpio' property of node '/ocp/interconnect@44c00000/segment@200000/target-module@9000/serial@0[0]'
+[    1.048626] omap8250 44e09000.serial: using lookup tables for GPIO lookup
+[    1.048636] omap8250 44e09000.serial: No GPIO consumer rs485-term found
+[    1.048647] omap8250 44e09000.serial: using DT '/ocp/interconnect@44c00000/segment@200000/target-module@9000/serial@0' for 'rs485-rx-during-tx' GPIO lookup
+[    1.048682] of_get_named_gpiod_flags: can't parse 'rs485-rx-during-tx-gpios' property of node '/ocp/interconnect@44c00000/segment@200000/target-module@9000/serial@0[0]'
+[    1.048718] of_get_named_gpiod_flags: can't parse 'rs485-rx-during-tx-gpio' property of node '/ocp/interconnect@44c00000/segment@200000/target-module@9000/serial@0[0]'
+[    1.048749] omap8250 44e09000.serial: using lookup tables for GPIO lookup
+[    1.048757] omap8250 44e09000.serial: No GPIO consumer rs485-rx-during-tx found
+[    1.049214] 44e09000.serial: ttyS0 at MMIO 0x44e09000 (irq = 34, base_baud = 3000000) is a 8250
+[    1.049308] printk: legacy console [ttyS0] enabled
+[    2.795027] i2c i2c-4: using DT '/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0' for 'scl' GPIO lookup
+[    2.795117] of_get_named_gpiod_flags: can't parse 'scl-gpios' property of node '/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0[0]'
+[    2.795165] of_get_named_gpiod_flags: can't parse 'scl-gpio' property of node '/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0[0]'
+[    2.795205] i2c i2c-4: using lookup tables for GPIO lookup
+[    2.795219] i2c i2c-4: No GPIO consumer scl found
+[    2.795244] i2c i2c-4: using DT '/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0' for 'sda' GPIO lookup
+[    2.795284] of_get_named_gpiod_flags: can't parse 'sda-gpios' property of node '/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0[0]'
+[    2.795324] of_get_named_gpiod_flags: can't parse 'sda-gpio' property of node '/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0[0]'
+[    2.795359] i2c i2c-4: using lookup tables for GPIO lookup
+[    2.795371] i2c i2c-4: No GPIO consumer sda found
+[    2.812346] tps65217-pmic: Failed to locate of_node [id: -1]
+[    2.818797] tps65217-bl: Failed to locate of_node [id: -1]
+[    2.827661] platform tps65217-charger: DMA mask not set
+[    2.836090] platform tps65217-pwrbutton: DMA mask not set
+[    2.844510] tps65217 4-0024: TPS65217 ID 0xe version 1.2
+[    2.850566] /ocp/interconnect@48000000/segment@300000/target-module@e000/lcdc@0: Fixed dependency cycle(s) with /ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70
+[    2.868868] /ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70: Fixed dependency cycle(s) with /ocp/interconnect@48000000/segment@300000/target-module@e000/lcdc@0
+[    2.887593] omap_i2c 44e0b000.i2c: bus 4 rev0.11 at 400 kHz
+[    2.897223] sdhci-omap 48060000.mmc: using DT '/ocp/interconnect@48000000/segment@0/target-module@60000/mmc@0' for 'cd' GPIO lookup
+[    2.897334] of_get_named_gpiod_flags: parsed 'cd-gpios' property of node '/ocp/interconnect@48000000/segment@0/target-module@60000/mmc@0[0]' - status (0)
+[    2.897400] gpio gpiochip3: Persistence not supported for GPIO 6
+[    2.897428] omap_gpio 44e07000.gpio: Could not set line 6 debounce to 200000 microseconds (-22)
+[    2.906353] sdhci-omap 48060000.mmc: Got CD GPIO
+[    2.911006] sdhci-omap 48060000.mmc: using DT '/ocp/interconnect@48000000/segment@0/target-module@60000/mmc@0' for 'wp' GPIO lookup
+[    2.911150] of_get_named_gpiod_flags: can't parse 'wp-gpios' property of node '/ocp/interconnect@48000000/segment@0/target-module@60000/mmc@0[0]'
+[    2.911204] of_get_named_gpiod_flags: can't parse 'wp-gpio' property of node '/ocp/interconnect@48000000/segment@0/target-module@60000/mmc@0[0]'
+[    2.911245] sdhci-omap 48060000.mmc: using lookup tables for GPIO lookup
+[    2.911258] sdhci-omap 48060000.mmc: No GPIO consumer wp found
+[    2.911578] sdhci-omap 48060000.mmc: supply pbias not found, using dummy regulator
+[    2.919848] sdhci-omap 48060000.mmc: supply vqmmc not found, using dummy regulator
+[    2.928858] sdhci-omap 481d8000.mmc: using DT '/ocp/interconnect@48000000/segment@100000/target-module@d8000/mmc@0' for 'wp' GPIO lookup
+[    2.928941] of_get_named_gpiod_flags: can't parse 'wp-gpios' property of node '/ocp/interconnect@48000000/segment@100000/target-module@d8000/mmc@0[0]'
+[    2.928991] of_get_named_gpiod_flags: can't parse 'wp-gpio' property of node '/ocp/interconnect@48000000/segment@100000/target-module@d8000/mmc@0[0]'
+[    2.929031] sdhci-omap 481d8000.mmc: using lookup tables for GPIO lookup
+[    2.929044] sdhci-omap 481d8000.mmc: No GPIO consumer wp found
+[    2.929239] sdhci-omap 481d8000.mmc: supply pbias not found, using dummy regulator
+[    2.937680] sdhci-omap 481d8000.mmc: supply vqmmc not found, using dummy regulator
+[    2.973836] mmc1: SDHCI controller on 481d8000.mmc [481d8000.mmc] using External DMA
+[    2.982043] mmc0: SDHCI controller on 48060000.mmc [48060000.mmc] using External DMA
+[    2.993317] cpsw-switch 4a100000.switch: starting ndev. mode: dual_mac
+[    3.040587] mmc0: new high speed SDHC card at address 59b4
+[    3.047869] mmcblk0: mmc0:59b4 USD 14.9 GiB
+[    3.056768]  mmcblk0: p1 p2
+[    3.060122] mmc1: new high speed MMC card at address 0001
+[    3.067548] mmcblk1: mmc1:0001 MK2704 3.53 GiB
+[    3.073611] SMSC LAN8710/LAN8720 4a101000.mdio:00: attached PHY driver (mii_bus:phy_addr=4a101000.mdio:00, irq=POLL)
+[    3.087334]  mmcblk1: p1
+[    3.091975] mmcblk1boot0: mmc1:0001 MK2704 2.00 MiB
+[    3.105534] mmcblk1boot1: mmc1:0001 MK2704 2.00 MiB
+[    3.115153] mmcblk1rpmb: mmc1:0001 MK2704 512 KiB, chardev (249:0)
+[    6.242089] cpsw-switch 4a100000.switch eth0: Link is Up - 100Mbps/Full - flow control off
+[    6.271527] IP-Config: Complete:
+[    6.274809]      device=eth0, hwaddr=18:2c:65:25:41:ce, ipaddr=192.168.255.2, mask=255.255.255.0, gw=255.255.255.255
+[    6.285474]      host=bbb1, domain=, nis-domain=(none)
+[    6.290642]      bootserver=192.168.255.126, rootserver=192.168.255.126, rootpath=
+[    6.291208] clk: Disabling unused clocks
+[    6.303168] PM: genpd: Disabling unused power domains
+[    6.308417] KTAP version 1
+[    6.311146] 1..0
+[    6.335733] VFS: Mounted root (nfs filesystem) on device 0:18.
+[    6.342885] devtmpfs: mounted
+[    6.346154] VFS: Pivoted into new rootfs
+[    6.351864] Freeing unused kernel image (initmem) memory: 1024K
+[    6.358506] Run /sbin/init as init process
+[    6.362742]   with arguments:
+[    6.362758]     /sbin/init
+[    6.362767]     nfsrootdebug
+[    6.362777]   with environment:
+[    6.362787]     HOME=/
+[    6.362795]     TERM=linux
+[    7.034135] systemd[1]: System time before build time, advancing clock.
+[    8.571355] random: crng init done
+[    8.584166] systemd[1]: systemd 232 running in system mode. (+PAM +AUDIT +SELINUX +IMA +APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +SECCOMP +BLKID +ELFUTILS +KMOD +IDN)
+[    8.603364] systemd[1]: Detected architecture arm.
+[    8.634452] systemd[1]: Set hostname to <arm>.
+[    9.733837] systemd[1]: Listening on Journal Audit Socket.
+[    9.762946] systemd[1]: Created slice User and Session Slice.
+[    9.793143] systemd[1]: systemd-journald-dev-log.socket: SO_PASSSEC failed: Operation not supported
+[    9.802787] systemd[1]: Listening on Journal Socket (/dev/log).
+[    9.832289] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+[    9.862719] systemd[1]: Created slice System Slice.
+[    9.891761] systemd[1]: Reached target Swap.
+[   12.120797] systemd-journald[79]: Received request to flush runtime journal from PID 1
+[   13.282134] omap_prm 44e00d00.prm: sync_state() pending due to 44d00000.cpu
+[   14.926565] leds-gpio leds: using DT '/leds/led2' for '(default)' GPIO lookup
+[   14.926670] of_get_named_gpiod_flags: parsed 'gpios' property of node '/leds/led2[0]' - status (0)
+[   14.926727] gpio gpiochip0: Persistence not supported for GPIO 21
+[   14.926743] gpio-533 (?): no flags found for GPIO (default)
+[   15.031941] leds-gpio leds: using DT '/leds/led3' for '(default)' GPIO lookup
+[   15.032052] of_get_named_gpiod_flags: parsed 'gpios' property of node '/leds/led3[0]' - status (0)
+[   15.032110] gpio gpiochip0: Persistence not supported for GPIO 22
+[   15.032126] gpio-534 (?): no flags found for GPIO (default)
+[   15.036444] leds-gpio leds: using DT '/leds/led4' for '(default)' GPIO lookup
+[   15.036540] of_get_named_gpiod_flags: parsed 'gpios' property of node '/leds/led4[0]' - status (0)
+[   15.036592] gpio gpiochip0: Persistence not supported for GPIO 23
+[   15.036607] gpio-535 (?): no flags found for GPIO (default)
+[   15.041846] leds-gpio leds: using DT '/leds/led5' for '(default)' GPIO lookup
+[   15.041947] of_get_named_gpiod_flags: parsed 'gpios' property of node '/leds/led5[0]' - status (0)
+[   15.041998] gpio gpiochip0: Persistence not supported for GPIO 24
+[   15.042013] gpio-536 (?): no flags found for GPIO (default)
+[   15.379435] remoteproc remoteproc0: wkup_m3 is available
+[   15.529833] at24 3-0054: supply vcc not found, using dummy regulator
+[   15.678569] at24 3-0055: supply vcc not found, using dummy regulator
+[   15.834956] at24 3-0056: supply vcc not found, using dummy regulator
+[   15.962305] at24 3-0057: supply vcc not found, using dummy regulator
+[   16.052995] input: tps65217_pwrbutton as /devices/platform/ocp/44c00000.interconnect/44c00000.interconnect:segment@200000/44e0b000.target-module/44e0b000.i2c/i2c-4/4-0024/tps65217-pwrbutton/input/input0
+[   16.087185] at24 4-0050: using DT '/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/eeprom@50' for 'wp' GPIO lookup
+[   16.087299] of_get_named_gpiod_flags: can't parse 'wp-gpios' property of node '/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/eeprom@50[0]'
+[   16.087360] of_get_named_gpiod_flags: can't parse 'wp-gpio' property of node '/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/eeprom@50[0]'
+[   16.087405] at24 4-0050: using lookup tables for GPIO lookup
+[   16.087421] at24 4-0050: No GPIO consumer wp found
+[   16.087735] at24 4-0050: 4096 byte 24c32 EEPROM, writable, 1 bytes/write
+[   16.192451] omap_rtc 44e3e000.rtc: registered as rtc0
+[   16.197633] omap_rtc 44e3e000.rtc: setting system clock to 2000-01-01T00:00:01 UTC (946684801)
+[   16.372979] omap_rtc 44e3e000.rtc: using DT '/ocp/interconnect@44c00000/segment@200000/target-module@3e000/rtc@0' for 'wp' GPIO lookup
+[   16.373093] of_get_named_gpiod_flags: can't parse 'wp-gpios' property of node '/ocp/interconnect@44c00000/segment@200000/target-module@3e000/rtc@0[0]'
+[   16.373149] of_get_named_gpiod_flags: can't parse 'wp-gpio' property of node '/ocp/interconnect@44c00000/segment@200000/target-module@3e000/rtc@0[0]'
+[   16.373190] omap_rtc 44e3e000.rtc: using lookup tables for GPIO lookup
+[   16.373205] omap_rtc 44e3e000.rtc: No GPIO consumer wp found
+[   16.443371] omap_wdt: OMAP Watchdog Timer Rev 0x01: initial timeout 60 sec
+[   17.104910] am335x-phy-driver 47401300.usb-phy: using DT '/ocp/target-module@47400000/usb-phy@1300' for 'reset' GPIO lookup
+[   17.105006] of_get_named_gpiod_flags: can't parse 'reset-gpios' property of node '/ocp/target-module@47400000/usb-phy@1300[0]'
+[   17.105053] of_get_named_gpiod_flags: can't parse 'reset-gpio' property of node '/ocp/target-module@47400000/usb-phy@1300[0]'
+[   17.105090] am335x-phy-driver 47401300.usb-phy: using lookup tables for GPIO lookup
+[   17.105105] am335x-phy-driver 47401300.usb-phy: No GPIO consumer reset found
+[   17.105120] am335x-phy-driver 47401300.usb-phy: using DT '/ocp/target-module@47400000/usb-phy@1300' for 'vbus-detect' GPIO lookup
+[   17.105153] of_get_named_gpiod_flags: can't parse 'vbus-detect-gpios' property of node '/ocp/target-module@47400000/usb-phy@1300[0]'
+[   17.105185] of_get_named_gpiod_flags: can't parse 'vbus-detect-gpio' property of node '/ocp/target-module@47400000/usb-phy@1300[0]'
+[   17.105211] am335x-phy-driver 47401300.usb-phy: using lookup tables for GPIO lookup
+[   17.105223] am335x-phy-driver 47401300.usb-phy: No GPIO consumer vbus-detect found
+[   17.105373] am335x-phy-driver 47401300.usb-phy: dummy supplies not allowed for exclusive requests (id=vbus)
+[   17.331942] am335x-phy-driver 47401b00.usb-phy: using DT '/ocp/target-module@47400000/usb-phy@1b00' for 'reset' GPIO lookup
+[   17.332920] of_get_named_gpiod_flags: can't parse 'reset-gpios' property of node '/ocp/target-module@47400000/usb-phy@1b00[0]'
+[   17.332995] of_get_named_gpiod_flags: can't parse 'reset-gpio' property of node '/ocp/target-module@47400000/usb-phy@1b00[0]'
+[   17.333201] am335x-phy-driver 47401b00.usb-phy: using lookup tables for GPIO lookup
+[   17.333220] am335x-phy-driver 47401b00.usb-phy: No GPIO consumer reset found
+[   17.333237] am335x-phy-driver 47401b00.usb-phy: using DT '/ocp/target-module@47400000/usb-phy@1b00' for 'vbus-detect' GPIO lookup
+[   17.333278] of_get_named_gpiod_flags: can't parse 'vbus-detect-gpios' property of node '/ocp/target-module@47400000/usb-phy@1b00[0]'
+[   17.333314] of_get_named_gpiod_flags: can't parse 'vbus-detect-gpio' property of node '/ocp/target-module@47400000/usb-phy@1b00[0]'
+[   17.333341] am335x-phy-driver 47401b00.usb-phy: using lookup tables for GPIO lookup
+[   17.333353] am335x-phy-driver 47401b00.usb-phy: No GPIO consumer vbus-detect found
+[   17.333507] am335x-phy-driver 47401b00.usb-phy: dummy supplies not allowed for exclusive requests (id=vbus)
+[   17.531558] usbcore: registered new interface driver usbfs
+[   17.646026] usbcore: registered new interface driver hub
+[   17.721861] usbcore: registered new device driver usb
+[   17.851258] tda998x 4-0070: found TDA19988
+[   18.480417] musb-hdrc musb-hdrc.1: MUSB HDRC host driver
+[   18.580063] musb-hdrc musb-hdrc.1: new USB bus registered, assigned bus number 1
+[   18.694903] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 7.00
+[   18.703534] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[   18.710808] usb usb1: Product: MUSB HDRC host driver
+[   18.715913] usb usb1: Manufacturer: Linux 7.0.0-rc2-next-20260302 musb-hcd
+[   18.722874] usb usb1: SerialNumber: musb-hdrc.1
+[   18.734748] omap-mailbox 480c8000.mailbox: omap mailbox rev 0x400
+[   18.821592] remoteproc remoteproc0: powering up wkup_m3
+[   19.006326] remoteproc remoteproc0: Direct firmware load for am335x-pm-firmware.elf failed with error -2
+[   19.103029] hub 1-0:1.0: USB hub found
+[   19.129261] remoteproc remoteproc0: request_firmware failed: -2
+[   19.135634] wkup_m3_ipc 44e11324.wkup_m3_ipc: rproc_boot failed
+[   19.161935] hub 1-0:1.0: 1 port detected
+[   21.252133] omap_rng 48310000.rng: Random Number Generator ver. 20
+[   21.585600] [drm] Initialized tilcdc 1.0.0 for 4830e000.lcdc on minor 0
+[   21.728836] tilcdc 4830e000.lcdc: [drm] Cannot find any crtc or sizes
+[   22.018868] tilcdc 4830e000.lcdc: [drm] Cannot find any crtc or sizes
+[   22.793837] PM: Cannot get wkup_m3_ipc handle
+[   23.085232] omap-sham 53100000.sham: hw accel on OMAP rev 4.3
+[   23.202102] omap-sham 53100000.sham: will run requests pump with realtime priority
+[   23.291814] PM: Cannot get wkup_m3_ipc handle
+[   23.300773] omap-aes 53500000.aes: OMAP AES hw accel rev: 3.2
+[   23.403158] omap-aes 53500000.aes: will run requests pump with realtime priority
+[   23.533352] PM: Cannot get wkup_m3_ipc handle
+[   24.077053] Bluetooth: Core ver 2.22
+[   24.080866] NET: Registered PF_BLUETOOTH protocol family
+[   24.086440] Bluetooth: HCI device and connection manager initialized
+[   24.334348] Bluetooth: HCI socket layer initialized
+[   24.339328] Bluetooth: L2CAP socket layer initialized
+[   24.509222] Bluetooth: SCO socket layer initialized
+[   26.535210] tda998x 4-0070: using DT '/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70' for 'nxp,calib' GPIO lookup
+[   26.535492] of_get_named_gpiod_flags: parsed 'nxp,calib-gpios' property of node '/ocp/interconnect@44c00000/segment@200000/target-module@b000/i2c@0/tda19988@70[0]' - status (0)
+[   26.535581] gpio gpiochip0: Persistence not supported for GPIO 25
+[   26.535598] gpio-537 (nxp,calib): no flags found for GPIO nxp,calib
+[   26.550599] gpio-537 (nxp,calib): gpiod_direction_output_nonotify: tried to set a GPIO tied to an IRQ as output
+[   26.587938] PM: Cannot get wkup_m3_ipc handle
+[   26.650923] asoc-simple-card sound: using DT '/sound' for 'simple-audio-card,hp-det' GPIO lookup
+[   26.651010] of_get_named_gpiod_flags: can't parse 'simple-audio-card,hp-det-gpios' property of node '/sound[0]'
+[   26.651048] of_get_named_gpiod_flags: can't parse 'simple-audio-card,hp-det-gpio' property of node '/sound[0]'
+[   26.651073] asoc-simple-card sound: using lookup tables for GPIO lookup
+[   26.651087] asoc-simple-card sound: No GPIO consumer simple-audio-card,hp-det found
+[   26.651102] asoc-simple-card sound: using DT '/sound' for 'simple-audio-card,mic-det' GPIO lookup
+[   26.651125] of_get_named_gpiod_flags: can't parse 'simple-audio-card,mic-det-gpios' property of node '/sound[0]'
+[   26.651151] of_get_named_gpiod_flags: can't parse 'simple-audio-card,mic-det-gpio' property of node '/sound[0]'
+[   26.651170] asoc-simple-card sound: using lookup tables for GPIO lookup
+[   26.651182] asoc-simple-card sound: No GPIO consumer simple-audio-card,mic-det found
+[   26.732422] PM: Cannot get wkup_m3_ipc handle
+[   26.827082] tda9950 4-0034: TDA9950 CEC interface, hardware version 3.3
+[   26.929227] PM: Cannot get wkup_m3_ipc handle
+[   29.189228] userial_init: registered 8 ttyGS* devices
+[   29.426814] rndis_register: configNr = 0
+[   29.510456] udc musb-hdrc.0: binding gadget driver [g_multi]
+[   29.510559] configfs-gadget.g_multi gadget.0: adding 'rndis'/4f02b60e to config 'c'/34efa364
+[   29.533030] configfs-gadget.g_multi gadget.0: HOST MAC 1c:ba:8c:a2:ed:6c
+[   29.539988] configfs-gadget.g_multi gadget.0: MAC 1c:ba:8c:a2:ed:70
+[   29.584536] rndis_set_param_medium: 0 0
+[   29.584609] configfs-gadget.g_multi gadget.0: RNDIS: IN/ep1in OUT/ep1out NOTIFY/ep2in
+[   29.584630] configfs-gadget.g_multi gadget.0: adding 'cdc_ethernet'/eabe8a70 to config 'c'/34efa364
+[   29.606373] configfs-gadget.g_multi gadget.0: HOST MAC 1c:ba:8c:a2:ed:6c
+[   29.613323] configfs-gadget.g_multi gadget.0: MAC 1c:ba:8c:a2:ed:6d
+[   29.659160] configfs-gadget.g_multi gadget.0: CDC Ethernet: IN/ep3in OUT/ep2out NOTIFY/ep4in
+[   29.659220] configfs-gadget.g_multi gadget.0: adding 'acm'/8c7bede7 to config 'c'/34efa364
+[   29.659267] configfs-gadget.g_multi gadget.0: acm ttyGS0: IN/ep5in OUT/ep3out NOTIFY/ep6in
+[   29.661003] PM: Cannot get wkup_m3_ipc handle
+[   31.109448] configfs-gadget.g_multi gadget.0: eth_open
+[   35.537571] gs_open: ttyGS0 (f2363833,2a754564)
+[   35.537732] gs_close: ttyGS0 (f2363833,2a754564) ...
+[   35.537754] gs_close: ttyGS0 (f2363833,2a754564) done!
+[   35.557909] gs_open: ttyGS0 (db19924c,2a754564)
+[   35.558047] gs_close: ttyGS0 (db19924c,2a754564) ...
+[   35.558070] gs_close: ttyGS0 (db19924c,2a754564) done!
+[   35.715294] gs_open: ttyGS0 (664761b7,ae53df23)
+[   35.715581] gs_close: ttyGS0 (664761b7,ae53df23) ...
+[   35.715610] gs_close: ttyGS0 (664761b7,ae53df23) done!
+[   35.715999] gs_open: ttyGS0 (664761b7,ae53df23)
+[   52.590937] mva_overlay: loading out-of-tree module taints kernel.
+[   52.594006] mva_overlay_init: Hello Peeps
+[   52.594072] create_sysfs_for_overlays: sysfs created
+[   56.518788] overlay_modify_store: got overlay data (pos=0, size=4096
+[   56.518850] overlay_modify_store: pos 0
+[   56.518873] overlay_modify_store: Copying data to buf[0-4095]
+[   56.518897] overlay_modify_store: got overlay data (pos=4096, size=177
+[   56.518910] overlay_modify_store: Writing 4273 byte overlay
+[   56.519949] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/pinctrl-0
+[   56.520016] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/clock-frequency
+[   56.520052] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/status
+[   56.520468] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /__symbols__/osc
+[   56.520527] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /__symbols__/bdpmic
+[   56.520579] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /__symbols__/buck1
+[   56.520629] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /__symbols__/buck2
+[   56.520679] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /__symbols__/buck3
+[   56.520728] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /__symbols__/buck4
+[   56.520777] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /__symbols__/buck5
+[   56.520827] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /__symbols__/ldo1
+[   56.520878] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /__symbols__/ldo2
+[   56.520928] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /__symbols__/ldo3
+[   56.520978] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /__symbols__/ldo4
+[   56.521029] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /__symbols__/ldo5
+[   56.521080] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /__symbols__/ldo6
+[   56.521131] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /__symbols__/ldo7
+[   56.521180] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /__symbols__/boost
+[   56.521211] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /__symbols__/clktest
+[   56.521243] OF: overlay: WARNING: memory leak will occur if overlay removed, property: /__symbols__/gpiotest
+[   56.562017] PM: Cannot get wkup_m3_ipc handle
+[   56.712600] PM: Cannot get wkup_m3_ipc handle
+[   56.835369] PM: Cannot get wkup_m3_ipc handle
+[   56.875780] gpiochip_find_base_unlocked: found new base at 640
+[   56.878382] gpio gpiochip4: (bd71815): added GPIO chardev (254:4)
+[   56.878922] gpio gpiochip4: registered GPIOs 640 to 640 on bd71815
+[   56.880754] PM: Cannot get wkup_m3_ipc handle
+[   56.941145] bd7181x-pmic bd71815-pmic.2.auto: using DT '/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/bd71815@4b' for 'rohm,vsel' GPIO lookup
+[   56.941266] of_get_named_gpiod_flags: can't parse 'rohm,vsel-gpios' property of node '/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/bd71815@4b[0]'
+[   56.941519] of_get_named_gpiod_flags: can't parse 'rohm,vsel-gpio' property of node '/ocp/interconnect@48000000/segment@100000/target-module@9c000/i2c@0/bd71815@4b[0]'
+[   56.941577] bd7181x-pmic bd71815-pmic.2.auto: No GPIO consumer rohm,vsel found
+[   56.943451] bd70528-rtc bd71815-rtc.6.auto: registered as rtc1
+[   56.944067] PM: Cannot get wkup_m3_ipc handle
+[   57.072117] PM: Cannot get wkup_m3_ipc handle
+[   62.857847] mva_test_init: Hello Peeps
+[   63.046744] bd71815-gpio-test gpouser: using DT '/gpouser' for 'my' GPIO lookup
+[   63.046876] of_get_named_gpiod_flags: parsed 'my-gpios' property of node '/gpouser[0]' - status (0)
+[   63.046938] gpio gpiochip4: Persistence not supported for GPIO 0
+[   63.048549] sysfs: cannot create duplicate filename '/kernel/mva_test'
+[   63.048593] CPU: 0 UID: 0 PID: 656 Comm: insmod Tainted: G           O        7.0.0-rc2-next-20260302 #1 VOLUNTARY 
+[   63.048620] Tainted: [O]=OOT_MODULE
+[   63.048626] Hardware name: Generic AM33XX (Flattened Device Tree)
+[   63.048636] Call trace: 
+[   63.048654]  unwind_backtrace from show_stack+0x10/0x14
+[   63.048705]  show_stack from dump_stack_lvl+0x50/0x64
+[   63.048736]  dump_stack_lvl from sysfs_warn_dup+0x50/0x64
+[   63.048770]  sysfs_warn_dup from sysfs_create_dir_ns+0xe4/0x104
+[   63.048794]  sysfs_create_dir_ns from kobject_add_internal+0xc4/0x320
+[   63.048829]  kobject_add_internal from kobject_add+0x5c/0xc8
+[   63.048853]  kobject_add from kobject_create_and_add+0x74/0xd0
+[   63.048875]  kobject_create_and_add from bd71815_gpio_probe+0x3c/0xb4 [bd71815_gpio_test]
+[   63.048959]  bd71815_gpio_probe [bd71815_gpio_test] from platform_probe+0x58/0x90
+[   63.048999]  platform_probe from really_probe+0xd8/0x420
+[   63.049018]  really_probe from __driver_probe_device+0x94/0x1f0
+[   63.049034]  __driver_probe_device from driver_probe_device+0x2c/0xd0
+[   63.049050]  driver_probe_device from __driver_attach+0x104/0x230
+[   63.049066]  __driver_attach from bus_for_each_dev+0x70/0xc4
+[   63.049097]  bus_for_each_dev from bus_add_driver+0xd4/0x230
+[   63.049126]  bus_add_driver from driver_register+0x80/0x11c
+[   63.049149]  driver_register from do_one_initcall+0x44/0x35c
+[   63.049173]  do_one_initcall from do_init_module+0x4c/0x230
+[   63.049209]  do_init_module from init_module_from_file+0xe8/0x108
+[   63.049234]  init_module_from_file from sys_finit_module+0x19c/0x344
+[   63.049259]  sys_finit_module from ret_fast_syscall+0x0/0x58
+[   63.049279] Exception stack(0xe0325fa8 to 0xe0325ff0)
+[   63.049297] 5fa0:                   09417c00 00000000 00000003 004f6294 00000000 be992c20
+[   63.049311] 5fc0: 09417c00 00000000 00507e1c 0000017b 00000000 00000000 00507770 00000000
+[   63.049322] 5fe0: be992bc8 be992bb8 004ed5bb b6e3f012
+[   63.049335] kobject: kobject_add_internal failed for mva_test with -EEXIST, don't try to register things with the same name in the same directory.
+[   63.049402] kobject: kobject_create_and_add: kobject_add error: -17
+[   63.049427] bd71815-gpio-test gpouser: probe with driver bd71815-gpio-test failed with error -22
+[   63.213518] mva_test_probe: Hello Peeps
+[   63.213694] clk_get(&pdev->dev, "bd71815-32k-out"); did not work
+[   63.213720] clk_get(NULL, "bd71815-32k-out"); did not work
+[   63.213758] YAY clk_get(&pdev->dev, NULL); did work
+[   63.214212] PM: Cannot get wkup_m3_ipc handle
+[   79.998801] buck1_en_store: YaY!, Regulator 'buck1' enabled
