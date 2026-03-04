@@ -1,0 +1,16 @@
+Testing: bd9576 PMIC
+Failed to check regulator enable state: Regulator 'VD50'. Return: Error: Could not open file `/dev/i2c-2' or `/dev/i2c/2': No such file or directory, Should be <class 'int'>
+---------------------------------- TEST INFO ----------------------------------
+regulator_is_on():
+This stage is precursor to checking that regulator enable state which can't be
+changed can be read.
+
+This is used for voltage run tests as well to first check if its normal that
+regulators voltage setting can not be changed.
+
+In the case of PMIC tested being BD71837 / BD71847:
+/proc/device-tree/.../rohm,no-regulator-enable-control is checked if it exists
+to determine whether enable mode can be changed.
+-------------------------------------------------------------------------------
+Test results: bd9576: FAILED
+
