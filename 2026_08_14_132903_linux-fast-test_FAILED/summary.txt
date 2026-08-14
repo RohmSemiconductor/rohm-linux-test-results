@@ -1,0 +1,46 @@
+BuildBot project: linux-fast-test
+Linux version: None
+Commit hash: cb5026beb2dec6b9db196c45d017cb69adc1a7a0
+
+Building kernel failed!
+stderr:
+
+drivers/base/core.c: In function 'fw_devlink_refresh_fwnode':
+drivers/base/core.c:269:23: error: implicit declaration of function 'get_dev_from_fwnode' [-Wimplicit-function-declaration]
+  269 |                 dev = get_dev_from_fwnode(fwnode);
+      |                       ^~~~~~~~~~~~~~~~~~~
+drivers/base/core.c:269:21: error: assignment to 'struct device *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+  269 |                 dev = get_dev_from_fwnode(fwnode);
+      |                     ^
+make[4]: *** [scripts/Makefile.build:229: drivers/base/core.o] Error 1
+make[3]: *** [scripts/Makefile.build:466: drivers/base] Error 2
+make[3]: *** Waiting for unfinished jobs....
+make[2]: *** [scripts/Makefile.build:466: drivers] Error 2
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [/home/user01/Linux-Driver-Testing/buildbot/master_root/master/workers/Linux_Worker/linux-fast-test/build/Makefile:1967: .] Error 2
+make: *** [Makefile:224: __sub-make] Error 2
+
+Building overlay merger failed!
+stderr:
+
+WARNING: Module.symvers is missing.
+         Modules may not have dependencies or modversions.
+         You may get many unresolved symbol errors.
+         You can set KBUILD_MODPOST_WARN=1 to turn errors into warning
+         if you want to proceed at your own risk.
+ERROR: modpost: "_printk" [/home/user01/Linux-Driver-Testing/buildbot/master_root/master/workers/Linux_Worker/linux-fast-test/build/_test-kernel-modules/overlay_merger/mva_overlay.ko] undefined!
+ERROR: modpost: "kobject_create_and_add" [/home/user01/Linux-Driver-Testing/buildbot/master_root/master/workers/Linux_Worker/linux-fast-test/build/_test-kernel-modules/overlay_merger/mva_overlay.ko] undefined!
+ERROR: modpost: "sysfs_create_bin_file" [/home/user01/Linux-Driver-Testing/buildbot/master_root/master/workers/Linux_Worker/linux-fast-test/build/_test-kernel-modules/overlay_merger/mva_overlay.ko] undefined!
+ERROR: modpost: "sysfs_remove_bin_file" [/home/user01/Linux-Driver-Testing/buildbot/master_root/master/workers/Linux_Worker/linux-fast-test/build/_test-kernel-modules/overlay_merger/mva_overlay.ko] undefined!
+ERROR: modpost: "kobject_put" [/home/user01/Linux-Driver-Testing/buildbot/master_root/master/workers/Linux_Worker/linux-fast-test/build/_test-kernel-modules/overlay_merger/mva_overlay.ko] undefined!
+ERROR: modpost: "kernel_kobj" [/home/user01/Linux-Driver-Testing/buildbot/master_root/master/workers/Linux_Worker/linux-fast-test/build/_test-kernel-modules/overlay_merger/mva_overlay.ko] undefined!
+ERROR: modpost: "__aeabi_unwind_cpp_pr0" [/home/user01/Linux-Driver-Testing/buildbot/master_root/master/workers/Linux_Worker/linux-fast-test/build/_test-kernel-modules/overlay_merger/mva_overlay.ko] undefined!
+ERROR: modpost: "memcpy" [/home/user01/Linux-Driver-Testing/buildbot/master_root/master/workers/Linux_Worker/linux-fast-test/build/_test-kernel-modules/overlay_merger/mva_overlay.ko] undefined!
+ERROR: modpost: "of_overlay_fdt_apply" [/home/user01/Linux-Driver-Testing/buildbot/master_root/master/workers/Linux_Worker/linux-fast-test/build/_test-kernel-modules/overlay_merger/mva_overlay.ko] undefined!
+ERROR: modpost: "mutex_lock" [/home/user01/Linux-Driver-Testing/buildbot/master_root/master/workers/Linux_Worker/linux-fast-test/build/_test-kernel-modules/overlay_merger/mva_overlay.ko] undefined!
+WARNING: modpost: suppressed 5 unresolved symbol warnings because there were too many)
+make[3]: *** [scripts/Makefile.modpost:145: /home/user01/Linux-Driver-Testing/buildbot/master_root/master/workers/Linux_Worker/linux-fast-test/build/_test-kernel-modules/overlay_merger/Module.symvers] Error 1
+make[2]: *** [/home/user01/Linux-Driver-Testing/buildbot/master_root/master/workers/Linux_Worker/linux-fast-test/build/Makefile:1919: modpost] Error 2
+make[1]: *** [Makefile:224: __sub-make] Error 2
+make: *** [Makefile:5: all] Error 2
+
