@@ -1,0 +1,66 @@
+BuildBot project: Linux_Mainline
+Linux version: v7.2
+Commit hash: 8d3ae59288f1e7d58d76558a6ee96d533bc5019f
+
+Kunit test result: test_linear_ranges: PASSED
+
+Testing: bd9576 PMIC
+Test results: bd9576: PASSED
+
+Testing: bd71847 PMIC
+Test results: bd71847: PASSED
+
+Testing: bd71815 PMIC
+Test results: bd71815: PASSED
+
+Testing: bd71828 PMIC
+Test results: bd71828: PASSED
+
+Testing: bd96801 PMIC
+Test results: bd96801: PASSED
+
+Testing: bd71837 PMIC
+Test results: bd71837: PASSED
+
+Testing: bd96802 PMIC
+Test results: bd96802: PASSED
+
+Testing: bd96805 PMIC
+Test results: bd96805: PASSED
+
+Testing: bd96806 PMIC
+Test results: bd96806: PASSED
+
+Git bisect state: failed
+f4feb1e20058e407cb00f45aff47f5b7e19a6bbf is the first 'bad' commit
+commit f4feb1e20058e407cb00f45aff47f5b7e19a6bbf
+Author: Weiming Shi <bestswngs@gmail.com>
+Date:   Wed May 20 09:00:21 2026 -0700
+
+    tun: free page on short-frame rejection in tun_xdp_one()
+    
+    tun_xdp_one() returns -EINVAL on a frame shorter than ETH_HLEN without
+    freeing the page that vhost_net_build_xdp() allocated for it.
+    tun_sendmsg() discards that -EINVAL and still returns total_len, so
+    vhost_tx_batch() takes the success path and never frees the page; each
+    short frame in a batch leaks one page-frag chunk.
+    
+    A local process that can open /dev/net/tun and /dev/vhost-net can hit
+    this path: it attaches a tun/tap device as the vhost-net backend and
+    feeds TX descriptors whose length minus the virtio-net header is below
+    ETH_HLEN. Each kick leaks the page-frag chunks for that batch, and a
+    tight submission loop exhausts host memory and triggers an OOM panic.
+    Free the page before returning -EINVAL, matching the XDP-program error
+    path in the same function.
+    
+    Fixes: 049584807f1d ("tun: add missing verification for short frame")
+    Reported-by: Xiang Mei <xmei5@asu.edu>
+    Signed-off-by: Weiming Shi <bestswngs@gmail.com>
+    Reviewed-by: Dongli Zhang <dongli.zhang@oracle.com>
+    Reviewed-by: Willem de Bruijn <willemb@google.com>
+    Link: https://patch.msgid.link/20260520160020.375349-2-bestswngs@gmail.com
+    Signed-off-by: Jakub Kicinski <kuba@kernel.org>
+
+ drivers/net/tun.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
