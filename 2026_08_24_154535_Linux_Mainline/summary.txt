@@ -1,0 +1,67 @@
+BuildBot project: Linux_Mainline
+Linux version: v7.2
+Commit hash: 8d3ae59288f1e7d58d76558a6ee96d533bc5019f
+
+Kunit test result: test_linear_ranges: PASSED
+
+Testing: bd9576 PMIC
+Test results: bd9576: PASSED
+
+Testing: bd71847 PMIC
+Test results: bd71847: PASSED
+
+Testing: bd71815 PMIC
+Test results: bd71815: PASSED
+
+Testing: bd71828 PMIC
+Test results: bd71828: PASSED
+
+Testing: bd96801 PMIC
+Test results: bd96801: PASSED
+
+Testing: bd71837 PMIC
+Test results: bd71837: PASSED
+
+Testing: bd96802 PMIC
+Test results: bd96802: PASSED
+
+Testing: bd96805 PMIC
+Test results: bd96805: PASSED
+
+Testing: bd96806 PMIC
+Test results: bd96806: PASSED
+
+Git bisect state: failed
+cfc83a3c71517b59c1047db57da31e26a9dc2f33 is the first 'bad' commit
+commit cfc83a3c71517b59c1047db57da31e26a9dc2f33
+Author: Sven Eckelmann <sven@narfation.org>
+Date:   Mon Feb 16 11:20:29 2026 +0100
+
+    batman-adv: Avoid double-rtnl_lock ELP metric worker
+    
+    batadv_v_elp_get_throughput() might be called when the RTNL lock is already
+    held. This could be problematic when the work queue item is cancelled via
+    cancel_delayed_work_sync() in batadv_v_elp_iface_disable(). In this case,
+    an rtnl_lock() would cause a deadlock.
+    
+    To avoid this, rtnl_trylock() was used in this function to skip the
+    retrieval of the ethtool information in case the RTNL lock was already
+    held.
+    
+    But for cfg80211 interfaces, batadv_get_real_netdev() was called - which
+    also uses rtnl_lock(). The approach for __ethtool_get_link_ksettings() must
+    also be used instead and the lockless version __batadv_get_real_netdev()
+    has to be called.
+    
+    Cc: stable@vger.kernel.org
+    Fixes: 8c8ecc98f5c6 ("batman-adv: Drop unmanaged ELP metric worker")
+    Reported-by: Christian Schmidbauer <github@grische.xyz>
+    Signed-off-by: Sven Eckelmann <sven@narfation.org>
+    Tested-by: Sören Skaarup <freifunk_nordm4nn@gmx.de>
+    Signed-off-by: Simon Wunderlich <sw@simonwunderlich.de>
+
+ net/batman-adv/bat_v_elp.c      | 10 +++++++++-
+ net/batman-adv/hard-interface.c |  8 ++++----
+ net/batman-adv/hard-interface.h |  1 +
+ 3 files changed, 14 insertions(+), 5 deletions(-)
+
