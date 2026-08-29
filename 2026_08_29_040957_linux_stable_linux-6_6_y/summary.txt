@@ -1,0 +1,51 @@
+BuildBot project: linux_stable_linux-6_6_y
+Linux version: v6.6.155
+Commit hash: a4a971135a2ff64382ae4235b3ae60503bb1036a
+
+Kunit test result: test_linear_ranges: PASSED
+
+Testing: kx022acr_z sensor
+Test results: kx022acr_z: PASSED
+
+Git bisect state: failed
+9f1de8e3840120570a48de0d2ba79c7da75a6493 is the first 'bad' commit
+commit 9f1de8e3840120570a48de0d2ba79c7da75a6493
+Author: Saravana Kannan <saravanak@google.com>
+Date:   Mon May 11 17:57:48 2026 +0200
+
+    Revert "treewide: Fix probing of devices in DT overlays"
+    
+    [ Upstream commit aaf08c52df9a19148731d4a3cfd85d98455db901 ]
+    
+    This reverts commit 1a50d9403fb90cbe4dea0ec9fd0351d2ecbd8924.
+    
+    While the commit fixed fw_devlink overlay handling for one case, it
+    broke it for another case. So revert it and redo the fix in a separate
+    patch.
+    
+    Fixes: 1a50d9403fb9 ("treewide: Fix probing of devices in DT overlays")
+    Reported-by: Herve Codina <herve.codina@bootlin.com>
+    Closes: https://lore.kernel.org/lkml/CAMuHMdXEnSD4rRJ-o90x4OprUacN_rJgyo8x6=9F9rZ+-KzjOg@mail.gmail.com/
+    Closes: https://lore.kernel.org/all/20240221095137.616d2aaa@bootlin.com/
+    Closes: https://lore.kernel.org/lkml/20240312151835.29ef62a0@bootlin.com/
+    Signed-off-by: Saravana Kannan <saravanak@google.com>
+    Link: https://lore.kernel.org/lkml/20240411235623.1260061-2-saravanak@google.com/
+    
+    [Herve: Fix conflicts due to f72e77c33e4b ("device property: Make
+    modifications of fwnode "flags" thread safe")]
+    
+    Signed-off-by: Herve Codina <herve.codina@bootlin.com>
+    Acked-by: Mark Brown <broonie@kernel.org>
+    Acked-by: Rob Herring (Arm) <robh@kernel.org>
+    Acked-by: Wolfram Sang <wsa+renesas@sang-engineering.com> # for I2C
+    Link: https://patch.msgid.link/20260511155755.34428-2-herve.codina@bootlin.com
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+    Signed-off-by: Sasha Levin <sashal@kernel.org>
+
+ drivers/bus/imx-weim.c    | 6 ------
+ drivers/i2c/i2c-core-of.c | 5 -----
+ drivers/of/dynamic.c      | 1 -
+ drivers/of/platform.c     | 5 -----
+ drivers/spi/spi.c         | 5 -----
+ 5 files changed, 22 deletions(-)
+
